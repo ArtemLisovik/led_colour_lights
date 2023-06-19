@@ -1,0 +1,239 @@
+@import './variables.scss';
+@import './animation.scss';
+
+.header {
+    background: #1a1919;
+    color: #a4a4a4;
+
+    &__wrapper {
+        display: flex;
+        @import './mixins.scss';
+        @import './variables.scss';
+        @import './animation.scss';
+        
+        .header {
+            background: #1a1919;
+            color: #a4a4a4;
+        
+            &__wrapper {
+                display: flex;
+                padding: 10px 0;
+                align-items: center;
+                gap: rem(40);
+        
+                &__icon {
+                    width: rem(140);
+                    height: rem(60);
+                    flex: 0 0 auto;
+        
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+        
+                    }
+                }
+            }
+        }
+        
+        
+        
+        // [data-category="2"] .sublink {
+        //     top: rem(-140);
+        
+        // }
+        
+        // [data-category="3"] .sublink {
+        //     top: rem(-170);
+        // }
+        
+        // [data-category="4"] .sublink {
+        //     top: rem(-200);
+        // }
+        
+        
+        .additional {
+            display: flex;
+            align-items: center;
+            gap: rem(10);
+        
+            input {
+                background-color: #1d1c1c;
+                width: rem(150);
+                height: rem(30);
+                padding: rem(8);
+                transition: all 0.5s ease;
+                color: white;
+                font-size: rem(14);
+            }
+        
+            input:focus {
+                border-bottom: rem(1) solid white;
+                width: rem(210);
+            }
+        }
+        
+        
+        .link {
+            color: inherit;
+        }
+        
+        
+        .arrow-right {
+            font-size: rem(26);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        @media (max-width: rem(1024)) {
+        
+        
+            .header {
+                z-index: 40;
+                position: fixed;
+                width: 100%;
+        
+            }
+        
+            // .menu {
+        
+            //     &__list {
+            //         display: none
+            //     }
+            // }
+        
+        
+            // .header__wrapper__burger {
+            //     display: block;
+            // }
+        
+        
+            // .burgerMenu {
+            //     display: block;
+            // }
+        
+        }
+        
+        
+        @media (max-width: rem(560)) {
+            .additional {
+                input {
+                    display: none;
+                }
+            }
+        
+            .header {
+                &__wrapper {
+                    gap: rem(10)
+                }
+            }
+        
+        
+            .header__wrapper__icon {
+                height: rem(50);
+                width: rem(100);
+            }
+        
+            .burgerMenu__button {
+                // top: rem(70)
+                width: rem(20);
+                height: rem(20);
+            }
+        }
+        
+        .burgerMenu__wrapper {
+            top: rem(69)
+        }
+        padding: rem(10) 0;
+        align-items: center;
+        gap: rem(40);
+
+        &__icon {
+            width: rem(140);
+            height: rem(60);
+            flex: 0 0 auto;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+
+            }
+        }
+    }
+}
+
+.additional {
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+    margin-left: auto;
+
+    input {
+        background-color: #1d1c1c;
+        width: rem(150);
+        height: rem(30);
+        padding: rem(8);
+        transition: all 0.5s ease;
+        color: white;
+        font-size: rem(14);
+    }
+
+    input:focus {
+        border-bottom: rem(1) solid white;
+        width: rem(210);
+    }
+}
+
+.link {
+    color: inherit;
+}
+
+.arrow-right {
+    font-size: rem(26);
+}
+
+@media (max-width: rem(1024)) {
+
+    .header {
+        z-index: 40;
+        position: fixed;
+        width: 100%;
+
+    }
+}
+
+@media (max-width: rem(560)) {
+    .additional {
+        input {
+            display: none;
+        }
+    }
+
+    .header {
+        &__wrapper {
+            gap: rem(10)
+        }
+    }
+
+
+    .header__wrapper__icon {
+        height: rem(50);
+        width: rem(100);
+    }
+
+    .burgerMenu__button {
+        // top: rem(70)
+        width: rem(20);
+        height: rem(20);
+    }
+}
+
+.burgerMenu__wrapper {
+    top: rem(69)
+}

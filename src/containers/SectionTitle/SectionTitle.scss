@@ -1,0 +1,18 @@
+.section {
+    &__title {
+        margin: 60px auto 30px;
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: .8px;
+        max-width: 430px;
+    }
+    
+    &__descr {
+        font-size: 20px;
+        line-height: 32px;
+        letter-spacing: .4px;
+        max-width: 650px;
+        margin: 0 auto 70px;
+        
+    }
+}

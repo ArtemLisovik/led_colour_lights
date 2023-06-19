@@ -1,0 +1,9 @@
+.title-animated {
+    // font-size: 60px;
+    font-weight: 400;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    font-size: calc(30px + 30px * (100vw / 1440px));
+    color: var(--color-text);
+    text-align: center;
+}

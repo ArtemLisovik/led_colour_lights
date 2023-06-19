@@ -1,0 +1,1 @@
+export {ExtraProposition} from './components/ExtraProposition/ExtraProposition'

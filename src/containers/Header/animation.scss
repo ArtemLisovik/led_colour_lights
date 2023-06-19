@@ -1,0 +1,38 @@
+@keyframes MenuItemsReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+        visibility: hidden
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        visibility: visible;
+    }
+}
+
+@keyframes reverseMenuItemsReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+        visibility: hidden
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        visibility: visible;
+    }
+}
+
+@keyframes menuItemsVanish {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        transform: translateX(-30px);
+        opacity: 0;
+        visibility: hidden;
+    }
+}

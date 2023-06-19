@@ -1,0 +1,75 @@
+.selector {
+    background: transparent;
+    width: 200px !important;
+}
+
+.custom-select {
+    &__control {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    &__indicator-separator {
+        display: none;
+    }
+    &__indicator {
+        // display: none!important;
+        color: var(--color-text);
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+    }
+    &__indicator:hover {
+        color: var(--color-active) !important;
+    }
+    &__menu {
+        width: 105px !important;
+        padding: 5px 16px !important;
+        border-radius: 8px !important;
+        overflow: hidden;
+        background: #303841b6 !important;
+        backdrop-filter: 10px;
+        width: max-content !important;
+        animation: scaleReveal 0.3s ease-in-out;
+    }
+    &__option {
+        cursor: pointer !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease;
+        // background-color: var(--color-active) !important;
+        &--is-focused {
+            background-color: lighten(#303841bb, 8%) !important;
+            border-radius: 8px !important;
+        }
+    }
+
+    &__item {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    &__item-flag {
+        height: 14px;
+        aspect-ratio: auto;
+    }
+    &__item-local {
+        text-transform: uppercase;
+        font-size: 13px;
+    }
+    &__single-value {
+        color: var(--color-text) !important;
+    }
+
+
+}
+
+@keyframes scaleReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.7)
+    };
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}

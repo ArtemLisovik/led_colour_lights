@@ -1,0 +1,55 @@
+.presentation__block {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 3fr;
+    max-width: 500px;
+    height: 800px;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+
+    &__info {
+        padding: 40px 60px;
+
+        &__notification {
+            color: #9a7b69;
+            font-size: 11px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        &__title {
+            font-size: 37px;
+            margin-bottom: 20px;
+            line-height: 120%;
+        }
+
+        &__descr {
+            font-size: 14px;
+            color: black;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            line-height: 2;
+        }
+
+        &__button {
+            display: inline-block;
+            padding: 14px 20px;
+            border: 1px #1a1919 solid;
+            letter-spacing: 1px;
+            width: 200px;
+
+        }
+
+    }
+
+    &__photo__wrapper {
+        width: 100%;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

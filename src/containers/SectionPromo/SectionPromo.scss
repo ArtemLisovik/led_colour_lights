@@ -1,0 +1,67 @@
+.Promo {
+    padding: 0!important;
+    width: 100vw;
+    height: calc(100vh - 70px);
+    z-index: 50;
+    background: black;
+    color: white;
+    position: relative;
+
+    video {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+.info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a191988;
+    padding-left: 25px;
+
+    @media (max-width: 560px) {
+        & {
+            padding-left: 0px;
+        }
+    }
+
+
+    &__title {
+        margin-top: 30vh;
+        letter-spacing: .6px;
+        line-height: 40px;
+        margin-bottom: 35px;
+        font-size: calc(20px + 35 * (100vw / 1470));
+        margin-bottom: 30px;
+
+
+    }
+
+    &__descr {
+        letter-spacing: .6px;
+        max-width: 660px;
+        margin-bottom: 25px;
+        line-height: 24px;
+        font-size: calc(10px + 4 * (100vw / 1470));
+    }
+
+    &__button {
+        background: #1a1919;
+        padding: 15px;
+        display: inline-block;
+        width: 190px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid #1a1919;
+
+        &:hover {
+            background: transparent;
+            
+        }
+    }
+}

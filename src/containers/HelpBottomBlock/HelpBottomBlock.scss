@@ -1,0 +1,16 @@
+.help-bottom {
+    &__border {
+        border-bottom: 1px solid #453f3f;
+        max-width: 400px;
+        margin: 0 auto;
+        padding-top: -50px;
+        // padding-bottom: 20px;
+        margin-bottom: 20px;
+        margin-top: -50px;
+    }
+    &____notification {
+        margin-top: 25px;
+        font-size: 12px;
+        margin-bottom: 40px;
+    }
+}

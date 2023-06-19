@@ -1,0 +1,31 @@
+.information {
+    text-align: center;
+    color: #453f3f;
+
+    &__inner{
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-bottom: 100px;
+    }
+
+    &__block{
+        padding: 40px;
+        color: white;
+        background: #242222;
+        flex: 1 1 23%;
+        min-height: 300px;
+        box-shadow: 0 0 10px black;
+
+        &-title{
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        &-text {
+            font-size: 14px;
+            line-height: 32px;
+        }
+    }
+
+}

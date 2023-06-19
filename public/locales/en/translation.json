@@ -1,0 +1,110 @@
+{
+    "head": {
+    },
+    "header": {
+    },
+    "main": {
+        "pages": {
+            "home": {
+                "promo": {
+                    "title": "Quality business consultancy for growth",
+                    "button": "Contats Us"
+                },
+                "about": {
+                    "title": "The EXPORT NAVIGATOR Consulting Agency team is a group of highly qualified specialists in the field of international trade. Our company helps to reformat your export or create it from scratch.",
+                    "button": "About Us"
+                },
+                "services": {
+                    "title": "Our business consulting services include:",
+                    "first": {
+                        "subtitle": "Strategic business planning in export",
+                        "text": "Our professional consultants will assess your current situation and help you redefine your vision. Subsequently, they will create and execute a strategic plan for export direction."
+                    },
+                    "second": {
+                        "subtitle": "Marketing analysis for export",
+                        "text": "Our team helps you to analyze sales markets, identify the company's advantages over foreign competitors, and determine optimal sales channels as well as the methods of marketing communications."
+                    },
+                    "third": {
+                        "subtitle": "Integrated management of the company's export project",
+                        "text": "We offer complete solutions, such as outsource your export department or parts of markets that are not covered by your export destination."
+                    },
+                    "button": "Our Offering"
+                },
+                "business": {
+                    "title": "Business consultancy done right"
+                }
+            },
+            "services": {
+                "title": "Our services",
+                "subtitle": "We help businesses redefine their goals, vision, and mission to create growth-driven strategic plans",
+                "first": {
+                    "subtitle": "Integrated company export project managment",
+                    "text1":  "- analysis of the company, industry, sales markets;",
+                    "text2": "- development of an export strategy;",
+                    "text3": "- search for buyers abroad;",
+                    "text4": "- placement of companies on online B2B sites;",
+                    "text5": "- preparation of the contract and other shipping documents;",
+                    "text6": "- support of the export transaction;",
+                    "text7": "- determination of the best global venues for holding international B2B events (exhibitions, fairs);",
+                    "text8": "- preparation of the company for participation in international exhibitions;",
+                    "text9": "- advice on international marketing and sales;",
+                    "text10": "- outsourcing of the Export Department;"
+                },
+                "second": {
+                    "subtitle": "Marketing analysis for export",
+                    "text1":  "- analysis of sales markets;",
+                    "text2":  "- identification of the company's advantages over foreign competitors;",
+                    "text3": "- determination of optimal sales channels, methods of marketing communications;",
+                    "text4": "- substantiation of marketing decisions;",
+                    "text5": "- determination of the competitiveness of companies in a particular market.",
+                    "text6": "- benchmarking.",
+                    "text7": "- product management."
+                },
+                "button": "Contats Us"
+            },
+            "about": {
+                "title": "Export Navigator Consulting Agency",
+                "section1": {
+                    "subtitle": "About company",
+                    "text1": "The EXPORT NAVIGATOR Consulting Agency team is a group of highly qualified specialists in the field of international trade, business digitalization and development of new business lines. Our main task is to promote the development of your business, open up new prospects in foreign markets, help you look at things from a new angle!",
+                    "text2": "Working with us today is your global business tomorrow.",
+                    "text3": "The company began its work in 2019, providing comprehensive assistance to entrepreneurs/manufacturers in carrying out export activities: searching for buyers abroad, analyzing foreign markets, building an export strategy, preparing for participation in international exhibitions, supporting export contracts, foreign economic transactions, etc.",
+                    "text4": "Thanks to the extensive practical experience of our specialists in the field of export (10 years or more), the team has a wide base of foreign importers, traders interested in Ukrainian products, and has developed its own methods for the effective entry of enterprises into foreign markets.",
+                    "text5": "EXPORT NAVIGATOR is your reliable partner in export consulting."
+                },
+                "section2": {
+                    "subtitle": "Mission and Values",
+                    "text1": "Our mission is to help our clients maximize their export potential by developing their knowledge and skills in international trade. We strive to encourage our clients to be successful in the international arena and provide them with access to programs that will help them in this.",
+                    "text2": "We believe in strategic partnerships and strengthening relationships with our clients in order to share the opportunities of international trade and ensure their business success abroad.",
+                    "text3": "Our value is the accumulated experience in the development of international relations, which we use for the benefit of our clients. We are dedicated to providing them with expert assistance in resolving any issues related to international operations and achieve success in exports."
+                },
+                "section3": {
+                    "subtitle": "Benefits of working with us",
+                    "subtitle2": "Experience and expertise",
+                    "text1": "The experience of our specialists is based on the practical application of the basic principles of international trade. Often, our experts are involved in various projects and have already brought our clients' products to the markets of more than 30 countries around the world. Due to the fact that our team is on the foreign trade market at the moment, we will lead you down a road 'without pitfalls', which will allow you to avoid a lot of unnecessary routine and inefficient work. Our experts are highly qualified foreign trade specialists with experience of 10 years and more.",
+                    "text2": "We believe that the success of our clients is our success, so we strive to provide high quality services and an individual approach to each project. We are focused on cooperation with clients who share our values and are aimed at the successful development of their business abroad.",
+                    "text3": "We evaluate different points of view (size, dynamics, conditions, competitors) using cabinet research, statistical analysis, expert interviews, and other market research tools. In most countries, we have research unit partners, interviewer networks, and focus group partners. With us, you can be sure that you will receive expert assistance in resolving all issues related to international operations and achieving success in exporting."
+                }
+            },
+            "team": {
+                "title": "Our team",
+                "subtitle": "Export Navigator team of professionals"
+            },
+            "contacts": {
+                "title": "Looking for professional business consultants? Contact Export Navigator to set up a meeting with our experienced experts.",
+                "form" : {
+                    "title": "Let's Connect",
+                    "name": "First name",
+                    "surname": "Last name",
+                    "phone": "Phone number",
+                    "message": "Enter your message",
+                    "button": "Send message"
+                },
+                "subtitle": "Our Contact Info"
+            }
+        }
+    },
+    "footer": {
+
+    }
+}

@@ -1,0 +1,1 @@
+export {InformationBlockList} from './components/InformationBlockList/InformationBlockList'

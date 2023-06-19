@@ -1,0 +1,16 @@
+.advantages {
+    &__block {
+        padding: 10px 20px;
+    
+        @media (max-width: 800px) {
+            width: 90vw;
+        }
+    }
+    &__notification {
+        font-weight: 600;
+        color: #9a7b69;
+        text-transform: uppercase;
+        font-size: 11px;
+        margin-bottom: 18px;
+    }
+}

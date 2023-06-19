@@ -1,0 +1,44 @@
+.form {
+    width: 100%;
+    background-color: #fff;
+    margin: 0 auto;
+    
+    h3 {
+        text-align: center;
+    }
+    // label {
+    //     display: block;
+    //     margin-bottom: 2px;
+    //     width: 100%;
+    // }
+
+    &__section {
+        display: flex;
+        margin-top: 70px;
+        gap: 20px;
+        width: 100%;
+    }
+    &__section-inner {
+        width: 50%;
+    }
+
+    &__button {
+        background: #7cb425;
+        border: none;
+        padding: 20px 60px;
+        color: var(--color-text);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        margin-top: 30px;
+
+    }
+    &__button:hover {
+        background: var(--color-active);
+    }
+
+}
+
+.error {
+    height: 10px;
+    color: red;
+}

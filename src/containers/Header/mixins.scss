@@ -1,0 +1,11 @@
+@import './variables.scss';
+
+
+@function rem($fontSizePx){
+    @return $fontSizePx / 16 + rem;
+  }
+
+@function titleFont($fontSizePx){
+    @return clamp($fontSizePx / 1.6, $fontSizePx / $containerSizePx * 100vw, $fontSizePx + $fontSizePx / 2);
+}
+

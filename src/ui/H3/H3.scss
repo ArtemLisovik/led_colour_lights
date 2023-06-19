@@ -1,0 +1,10 @@
+.title-animated2 {
+    margin-top: 23px;
+    font-size: 40px;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    color: var(--color-text2);
+    @media (max-width: 600px) {
+        font-size: 35px;
+    }
+}
