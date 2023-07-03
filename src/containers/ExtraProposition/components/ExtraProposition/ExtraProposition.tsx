@@ -31,7 +31,7 @@ export const ExtraProposition = () => {
                         pagination={{ clickable: true }}
                         scrollbar={{ draggable: true }}
                         autoplay={{
-                            delay: 2500000,
+                            delay: 2500,
                             disableOnInteraction: true,
                         }}>
 
