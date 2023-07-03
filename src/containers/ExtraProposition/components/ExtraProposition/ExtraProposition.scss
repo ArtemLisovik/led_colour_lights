@@ -16,7 +16,6 @@
     line-height: 130%;
 
     &__wrapper {
-        width: 740px;
         height: max-content;
         margin: 0 auto;
         position: relative;
@@ -48,7 +47,7 @@
 
 
         @media (max-width: 800px) {
-            width: 90vw;
+            // width: 90vw;
             font-size: 14px;
         }
     }
