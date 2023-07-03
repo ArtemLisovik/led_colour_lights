@@ -1,8 +1,9 @@
 .swiper {
     text-align: center!important;
     padding-bottom: 40px!important;
-    &__slide {
-        width: 100%!important;
+    &-slide {
+        // width: 100%!important;
+        margin-right: 0!important;
     }
     &-scrollbar {
         display: none!important;

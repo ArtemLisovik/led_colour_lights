@@ -8,6 +8,10 @@ body {
     // font-family: 'Lato', sans-serif;
     font-family: Montserrat;
     font-size: 14px;
+    scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .container {
@@ -27,6 +31,9 @@ body {
     flex: 1 0 auto;
     background: #f6f4f2;
 }
+.main.dark {
+    background: black;
+}
 
 section {
     padding: 50px 0 !important;
@@ -36,3 +43,6 @@ a {
     text-decoration: none;
 }
 
+.products {
+    
+}

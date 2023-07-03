@@ -23,7 +23,7 @@ export const ExtraProposition = () => {
                     <Swiper
                         // install Swiper modules
                         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-                        spaceBetween={20}
+                        spaceBetween={0}
                         slidesPerView={1}
                         speed={600}
                         loop={true}

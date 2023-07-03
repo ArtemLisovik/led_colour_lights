@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Footer, Header, SectionPromo } from '../containers'
+import { Footer, Header, HelpBottomBlock, SectionPromo } from '../containers'
 import { P } from 'ui'
 
 type PrimaryLayoutProps = {
@@ -16,6 +16,7 @@ export const SecondaryLayout = ({children}:PrimaryLayoutProps) => {
         <main className="main">
             {/* <SectionPromo/> */}
             {children}
+            <HelpBottomBlock/>
         </main>
     <Footer/>
     </>

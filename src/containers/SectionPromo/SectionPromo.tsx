@@ -1,23 +1,32 @@
+import { Link } from 'react-router-dom'
 import './SectionPromo.scss'
 
 import promo from 'assets/img/promo.mp4'
 
-export const SectionPromo = () => {
+type SectionPromoType = {
+  image?: string,
+  video?: string,
+  text: string,
+  title: string,
+  btn?: string,
+  btnLink?: string
+}
+export const SectionPromo = ({image, video, title, text, btn, btnLink}: SectionPromoType) => {
   return (
-    <section className="Promo">
+    <section className="promo">
 
-      <video autoPlay loop muted={true}>
+      {image && <img className='promo__poster' src={image}/>}
+      {video && <video autoPlay loop muted={true}>
         <source src={promo} type="video/mp4"/>
         {/* <source src="./assets/promo.webm" type="video/webm"> */}
-    </video>
+    </video>}
 
 
       <div className="info__wrapper info">
-        <div className="container">
-          <h1 className="info__title">Led Colour Lights</h1>
-          <p className="info__descr">It’s the little things that make a home, from luxury home fragrances by the best
-            perfumers to scented candles.</p>
-          <a href="./catalogue.html" className="info__button">Детальніше</a>
+        <div className="container promo__container">
+          <h1 className="info__title">{title}</h1>
+          <p className="info__descr">{text}</p>
+          {btn && <Link to={btnLink as string} className="info__button">{btn}</Link>}
         </div>
       </div>
 

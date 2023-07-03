@@ -26,22 +26,3 @@ export const integrateImageRefToCard = async (array: Partial<ProductType>[], pat
     }));
     return newProducts;
 };
-
-
-
-
-
-// export const integrateImageRefToCard = (array: Partial<ProductType>[]) => {
-//     const newProducts = array.map(async (product: Partial<ProductType>) => {
-//         const image = await getImage(`products/${product.id}.jpg`)
-//         console.log(image)
-
-//         return {
-//         ...product, 
-//         image: image
-//         }
-//     })
-
-//     console.log(newProducts)
-//     return newProducts
-// }

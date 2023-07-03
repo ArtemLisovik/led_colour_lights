@@ -1,4 +1,4 @@
-.Promo {
+.promo {
     padding: 0!important;
     width: 100vw;
     height: calc(100vh - 70px);
@@ -7,7 +7,20 @@
     color: white;
     position: relative;
 
+    &__container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+    }
+
     video {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__poster {
         object-fit: cover;
         width: 100%;
         height: 100%;
@@ -22,7 +35,6 @@
     width: 100%;
     height: 100%;
     background: #1a191988;
-    padding-left: 25px;
 
     @media (max-width: 560px) {
         & {
@@ -32,12 +44,13 @@
 
 
     &__title {
-        margin-top: 30vh;
+        // margin-top: 30vh;
         letter-spacing: .6px;
         line-height: 40px;
         margin-bottom: 35px;
         font-size: calc(20px + 35 * (100vw / 1470));
         margin-bottom: 30px;
+        text-shadow: 0 0 5px #fff;
 
 
     }
@@ -47,7 +60,9 @@
         max-width: 660px;
         margin-bottom: 25px;
         line-height: 24px;
-        font-size: calc(10px + 4 * (100vw / 1470));
+        font-size: calc(12px + 4 * (100vw / 1470));
+        text-shadow: 0 0 5px #fff;
+
     }
 
     &__button {

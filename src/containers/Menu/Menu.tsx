@@ -43,12 +43,12 @@ export const Menu = () => {
   )
 }
 
-
+  
 export const DesktopMenu = () => {
   const [menuOpened, setMenuOpened] = useState('')
 
   useEffect(() => {
-    menuOpened === '' ? document.body.style.overflow = 'scroll' : document.body.style.overflow = 'hidden'
+    menuOpened === '' ? document.body.style.overflowY = 'scroll' : document.body.style.overflow = 'hidden'
   }, [menuOpened])
 
   return (

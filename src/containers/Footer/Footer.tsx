@@ -45,8 +45,8 @@ export const Footer = () => {
           <div className="footer__about">
             <h4 className="footer__title">Компанія</h4>
             <ul className="footer__list">
-              <li className="footer__item"><a href="./aboutUs.html" className="footer__link">Про нас</a></li>
-              <li className="footer__item"><a href="./news.html" className="footer__link">Новини</a></li>
+              <li className="footer__item"><Link to='/about' className="footer__link">Про нас</Link></li>
+              <li className="footer__item"><Link to='/news' className="footer__link">Новини</Link></li>
               <li className="footer__item"><a href="" className="footer__link">Контакти</a></li>
             </ul>
           </div>
@@ -54,7 +54,7 @@ export const Footer = () => {
           <div className="footer__usefull">
             <h4 className="footer__title">Інформація</h4>
             <ul className="footer__list">
-              <li className="footer__item"><a href="" className="footer__link">Питання та відповіді</a></li>
+              <li className="footer__item"><Link to='/faq' className="footer__link">Питання та відповіді</Link></li>
               <li className="footer__item"><a href="./inspiration.html
                 " className="footer__link">Натхнення</a></li>
               <li className="footer__item"><a href="" className="footer__link">Поради</a></li>
