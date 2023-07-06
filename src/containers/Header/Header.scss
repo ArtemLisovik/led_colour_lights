@@ -237,3 +237,15 @@
 .burgerMenu__wrapper {
     top: rem(69)
 }
+
+.cart__icon {
+    cursor: pointer;
+}
+
+.cart__block {
+    position: relative;
+
+    @media (max-width: 520px) {
+        position: static;
+    }
+}

@@ -21,6 +21,8 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+    }
+    &__product:not(:last-child) {
         margin-bottom: 60px;
     }
 

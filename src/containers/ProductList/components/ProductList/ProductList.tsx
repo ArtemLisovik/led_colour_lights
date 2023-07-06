@@ -43,8 +43,6 @@ export const ProductList = ({ title, category, database, filter, path1, path2 }:
     func()
   }, [])
 
-  console.log(Object.values(products))
-
   return (
     <section
       style={filter ? { marginTop: '-250px', position: 'relative', zIndex: '50' } : {}}

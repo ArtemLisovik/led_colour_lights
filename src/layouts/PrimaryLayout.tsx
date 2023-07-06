@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Footer, Header, HelpBottomBlock, SectionPromo } from '../containers'
+import { Preloader } from 'ui/Preloader/Preloader'
 
 
 type PrimaryLayoutProps = {
@@ -15,11 +16,19 @@ type PrimaryLayoutProps = {
 }
 
 export const PrimaryLayout = ({ children, video, image, text, title, btn, dark, color, btnLink }: PrimaryLayoutProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  useLayoutEffect(() => {
+    setIsLoading(false)
+  }, [])
+
   return (
     <>
+      <Preloader loading={isLoading}/>
       <Header />
       <main className={`main ${dark ? 'dark': null}`} >
         <SectionPromo

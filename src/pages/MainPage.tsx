@@ -6,16 +6,10 @@ import { useTranslation } from "react-i18next"
 import { ExtraProposition, SpecialOfferList } from "containers"
 
 import video from 'assets/img/promo.mp4'
-import { useEffect } from "react"
 
 export const MainPage = () => {
   const { t } = useTranslation()
 
-  useEffect(() => {
-    window.onload = () => {
-      console.log('done')
-    }
-  },[])
   return (
     <>
       <Helmet>

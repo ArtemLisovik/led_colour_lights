@@ -1,27 +1,70 @@
-.preolader {
-    position:fixed;
-    top:0;
-    left: 0;
+.preloader {
+    position: fixed;
     width: 100vw;
-    height: 100vh;
-    z-index: 100;
+    height: 100%;
+    left: 0;
+    top:0;
     background: #1a1919;
-    display: flex;
+    z-index: 100;
     justify-content: center;
+    align-items: center;
+    display: flex;
     transition: all 0.8s ease;
-    &__inner {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100vw;
-        height: 100vh;
-        max-width: 300px;
-    }
-    &__inner:before {
-        width: 100%;
-        padding-bottom: 100%;
-        box-shadow: inset 0 0 0 20px #fff;
-        animation-name: pulsA;
-    }
+    visibility: visible;
 }
+.preloader.off {
+    opacity: 0;
+    visibility: hidden;
+}
+.preloader__inner {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 6rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  .preloader__inner:before,
+  .preloader__inner:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    animation: pulsOut 1.8s ease-in-out infinite;
+    filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.75));
+  }
+  .preloader__inner:before {
+    width: 100%;
+    padding-bottom: 100%;
+    box-shadow: inset 0 0 0 1rem #fff;
+    animation-name: pulsIn;
+  }
+  .preloader__inner:after {
+    width: calc(100% - 2rem);
+    padding-bottom: calc(100% - 2rem);
+    box-shadow: 0 0 0 0 #fff;
+  }
+
+  @keyframes pulsIn {
+    0% {
+      box-shadow: inset 0 0 0 1rem #fff;
+      opacity: 1;
+    }
+    50%, 100% {
+      box-shadow: inset 0 0 0 0 #fff;
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulsOut {
+    0%, 50% {
+      box-shadow: 0 0 0 0 #fff;
+      opacity: 0;
+    }
+    100% {
+      box-shadow: 0 0 0 1rem #fff;
+      opacity: 1;
+    }
+  }
+      

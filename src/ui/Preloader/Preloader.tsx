@@ -1,8 +1,20 @@
+import { useEffect, useState } from 'react'
 import './Preloader.scss'
 
-export const Preloader = () => {
+type PreloaderType = {
+  loading: boolean
+}
+
+export const Preloader = ({loading}: PreloaderType) => {
+  
+  const [isLoading, setIsLoading] = useState<boolean>(loading)
+
+  useEffect(() => {
+    setIsLoading(loading)
+  },[loading])
+
   return (
-    <div className="preloader">
+    <div className={`${isLoading ? 'preloader' : 'preloader off'}`}>
         <div className="preloader__inner"></div>
     </div>
   )

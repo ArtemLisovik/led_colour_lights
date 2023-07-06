@@ -1,19 +1,25 @@
 import './SpecialOfferList.scss'
 
 import { SpecialOfferItem } from '../SpecialOfferItem/SpecialOfferItem'
-import { getSpecials } from '../../store/specialOffersThunk'
-import { useAppSelector, useAppDispatch } from 'hooks/useRedux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { db } from 'config/firebase'
+import { doc, getDoc } from 'firebase/firestore'
+import { ProductType } from 'types/types'
 
 export const SpecialOfferList = () => {
 
-    const specials = useAppSelector(state => state.SpecialsReducer.specials)
-
-    const dispatch = useAppDispatch()
+  const [specials, setSpecials] = useState<Array<ProductType>>([])
 
     useEffect(() => {
-        dispatch(getSpecials())
+
+      const getSpecials = async () => {
+        const docSnap = await getDoc(doc(db, "pages", "main"));
+        setSpecials(docSnap.data()?.SPECIAL)
+      }
+
+      getSpecials()
     }, [])
+
 
     const specialsView = specials.map((specials, index) => (
         <SpecialOfferItem 
@@ -42,4 +48,4 @@ export const SpecialOfferList = () => {
     </div>
   </section>
   )
-}
+      }

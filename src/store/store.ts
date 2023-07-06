@@ -1,13 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import ProductsReducer from 'containers/ProductList/store/productsSlice'
-import SpecialsReducer from 'containers/SpecialOfferList/store/specialOffersSlice'
+import CartReducer from 'containers/Cart/store/CartSlice'
 
-
-// import trusteeReducer from 'containers/TrusteeList/store/TrusteeSlice'
 
 export const store = configureStore({
-    reducer: {ProductsReducer, SpecialsReducer},
+    reducer: {ProductsReducer, CartReducer},
     middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
     devTools: process.env.NODE_ENV !== "production"
 })
