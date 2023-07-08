@@ -3,10 +3,14 @@ import {Logo} from 'ui'
 
 import './Header.scss'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from 'store/store'
 
 export const Header = () => {
 
   const [cart, setCart] = useState<boolean>(false)
+
+  const {products} = useSelector((state: RootState) => state.CartReducer)
 
   const handler = () => {
     setCart((state) => !state) 
@@ -41,6 +45,7 @@ export const Header = () => {
               d="M41.3 14.58a5 5 0 0 0-5-4.58H34a10 10 0 0 0-20 0h-2.32a5 5 0 0 0-5 4.58l-2.36 28a5 5 0 0 0 5 5.39h29.35a5 5 0 0 0 5-5.4ZM24 2a8 8 0 0 1 8 8H16a8 8 0 0 1 8-8Zm14.67 44H9.33a3 3 0 0 1-3-3.23l2.35-28a3 3 0 0 1 3-2.75H14v6h-1a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2h-1V12h16v6h-1a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2h-1v-6h2.32a3 3 0 0 1 3 2.75l2.35 28a3 3 0 0 1-3 3.25Z"
               data-name="Shopping Bag" />
           </svg>
+          <span className="cart__counter">{products.length > 0 && products.length}</span>
 
           <Cart 
           active={cart} 

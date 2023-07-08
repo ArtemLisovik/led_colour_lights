@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import './Menu.scss'
 
@@ -23,7 +23,7 @@ export const Menu = () => {
 
   useEffect(() => {
     getWindowSize()
-    
+
   }, []);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export const Menu = () => {
   )
 }
 
-  
+
 export const DesktopMenu = () => {
   const [menuOpened, setMenuOpened] = useState('')
 
@@ -67,10 +67,20 @@ export const DesktopMenu = () => {
         <li className="menu__list__item category">
           <p
             onClick={() => setMenuOpened('news')}
-            className="menu__list__item__link">Новинки</p>
+            className="menu__list__item__link">
+            <Link to='products/news'>Новинки</Link>
+          </p>
 
-          {menuOpened === 'news' &&
-            <ul className={`menu__block__list ${menuOpened === 'news' ? 'active' : ''}`}>
+        </li>
+
+        <li className="menu__list__item category">
+          <p
+            onClick={() => setMenuOpened('girlyandus')}
+            className="menu__list__item__link">Гірлянди</p>
+
+          {menuOpened === 'girlyandus' &&
+            <ul className={`menu__block__list ${menuOpened === 'girlyandus' ? 'active' : ''}`} >
+
 
               <motion.li
                 initial='hidden'
@@ -78,8 +88,7 @@ export const DesktopMenu = () => {
                 viewport={{ amount: 0.1, once: false }}
                 variants={fromLeftToRight}
                 custom={0.3}
-                className={`menu__link`}>
-
+                className="menu__link">
                 <a className="menu__link__sublink sublink" href="">
                   <div className="sublink__image">
                     <img src="./assets/presentation.jpeg" alt="presentation" />
@@ -123,89 +132,44 @@ export const DesktopMenu = () => {
                 <span className="menu__link__text">Аксессуари</span>
               </motion.li>
 
+            </ul>}
+        </li>
+
+
+
+        <li className="menu__list__item category">
+          <p
+            onClick={() => setMenuOpened('candles')}
+            className="menu__list__item__link">Свічки</p>
+
+          {menuOpened === 'candles' &&
+            <ul className={`menu__block__list ${menuOpened === 'candles' ? 'active' : ''}`} >
+
+
               <motion.li
                 initial='hidden'
                 whileInView='visible'
                 viewport={{ amount: 0.1, once: false }}
                 variants={fromLeftToRight}
-                custom={0.6}
+                custom={0.3}
                 className="menu__link">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text4</p>
-                </a>
-                <span className="menu__link__text">Гірлянди вуличні</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </motion.li>
 
-            </ul>}
-        </li>
-
-        <li className="menu__list__item category">
-          <p
-            onClick={() => setMenuOpened('girlyandus')}
-            className="menu__list__item__link">Гірлянди</p>
-
-          {menuOpened === 'girlyandus' &&
-            <ul className={`menu__block__list ${menuOpened === 'girlyandus' ? 'active' : ''}`} >
-
-
-              <motion.li 
-              initial='hidden'
-              whileInView='visible'
-              viewport={{ amount: 0.1, once: false }}
-              variants={fromLeftToRight}
-              custom={0.3}
-              className="menu__link">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text1</p>
-                </a>
-                <span className="menu__link__text">Гірлянди кімнатні</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
+                <span className="menu__link__text">Свічки</span>
               </motion.li>
 
               <motion.li
-              initial='hidden'
-              whileInView='visible'
-              viewport={{ amount: 0.1, once: false }}
-              variants={fromLeftToRight}
-              custom={0.4}
-               className="menu__link">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text2</p>
-                </a>
-                <span className="menu__link__text">Гірлянди вуличні</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </motion.li>
-
-              <motion.li 
-              initial='hidden'
-              whileInView='visible'
-              viewport={{ amount: 0.1, once: false }}
-              variants={fromLeftToRight}
-              custom={0.6}
-              className="menu__link">
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ amount: 0.1, once: false }}
+                variants={fromLeftToRight}
+                custom={0.4}
+                className="menu__link">
                 <span className="menu__link__text">Аксессуари</span>
               </motion.li>
 
-            </ul>}
+            </ul>
+
+          }
         </li>
 
 
@@ -215,185 +179,76 @@ export const DesktopMenu = () => {
             onClick={() => setMenuOpened('decor')}
             className="menu__list__item__link">Декор</p>
 
-          <div className="menu__block">
-            <div className="menu__close">
-              <span className="menu__close__button"></span>
-            </div>
 
-            <ul className="menu__block__list" id="gir2">
+          {menuOpened === 'decor' &&
+            <ul className={`menu__block__list ${menuOpened === 'decor' ? 'active' : ''}`}>
 
-              <li className="menu__link" data-category="1">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text2</p>
-                </a>
-                <span className="menu__link__text">Ялинкові прикраси</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
+              <motion.li
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ amount: 0.1, once: false }}
+                variants={fromLeftToRight}
+                custom={0.3}
+                className="menu__link">
 
-
-              <li className="menu__link" data-category="2">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text2</p>
-                </a>
-                <span className="menu__link__text">Ідеї для подарунків</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-
-              <li className="menu__link" data-category="3">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text3</p>
-                </a>
-                <span className="menu__link__text">LED фігури</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-
-              <li className="menu__link" data-category="4">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text4</p>
-                </a>
-                <span className="menu__link__text">Декор з освітленням</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-
-              <li className="menu__link" data-category="4">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text4</p>
-                </a>
                 <span className="menu__link__text">Проектори</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
+              </motion.li>
 
+              <motion.li
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ amount: 0.1, once: false }}
+                variants={fromLeftToRight}
+                custom={0.4}
+                className="menu__link">
+                <span className="menu__link__text">Нічники</span>
+              </motion.li>
 
-              <li className="menu__link" data-category="4">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text4</p>
-                </a>
-                <span className="menu__link__text">Свічки і підсвічники</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
+              <motion.li
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ amount: 0.1, once: false }}
+                variants={fromLeftToRight}
+                custom={0.5}
+                className="menu__link">
 
+                <span className="menu__link__text">LED дерева</span>
+              </motion.li>
+
+              <motion.li
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ amount: 0.1, once: false }}
+                variants={fromLeftToRight}
+                custom={0.6}
+                className="menu__link">
+                <span className="menu__link__text">Подарунові набори</span>
+              </motion.li>
+
+              <motion.li
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ amount: 0.1, once: false }}
+                variants={fromLeftToRight}
+                custom={0.7}
+                className="menu__link">
+
+                <span className="menu__link__text">Ялинкові прикраси</span>
+
+              </motion.li>
+
+              <motion.li
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ amount: 0.1, once: false }}
+                variants={fromLeftToRight}
+                custom={0.8}
+                className="menu__link">
+                <span className="menu__link__text">Новорічні фігури</span>
+              </motion.li>
             </ul>
+          }
 
-          </div>
-        </li>
-
-
-
-        <li className="menu__list__item category">
-          <p
-            onClick={() => setMenuOpened('sets')}
-            className="menu__list__item__link">Набори</p>
-
-          <div className="menu__block">
-            <div className="menu__close">
-              <span className="menu__close__button"></span>
-            </div>
-
-            <ul className="menu__block__list" id="tiers">
-
-
-              <li className="menu__link" id="new" data-category="1">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text2</p>
-                </a>
-                <span className="menu__link__text">menu_4</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-
-              <li className="menu__link" id="new" data-category="2">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text2</p>
-                </a>
-                <span className="menu__link__text">menu_4</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-
-              <li className="menu__link" id="new" data-category="3">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text3</p>
-                </a>
-                <span className="menu__link__text">menu_4</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-
-              <li className="menu__link" id="new" data-category="4">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text4</p>
-                </a>
-                <span className="menu__link__text">menu_4</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-
-            </ul>
-
-          </div>
         </li>
 
 
@@ -401,78 +256,12 @@ export const DesktopMenu = () => {
         <li className="menu__list__item category">
           <p
             onClick={() => setMenuOpened('sale')}
-            className="menu__list__item__link">Акції</p>
+            className="menu__list__item__link">
+            <Link to='products/sale'>Акції</Link>
 
-          <div className="menu__block">
-            <div className="menu__close">
-              <span className="menu__close__button"></span>
-            </div>
-
-            <ul className="menu__block__list" id="sale">
+          </p>
 
 
-              <li className="menu__link" id="new" data-category="1">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text2</p>
-                </a>
-                <span className="menu__link__text">menu_5</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-
-              <li className="menu__link" id="new" data-category="2">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text2</p>
-                </a>
-                <span className="menu__link__text">menu_5</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-
-              <li className="menu__link" id="new" data-category="3">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text3</p>
-                </a>
-                <span className="menu__link__text">menu_5</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-
-              <li className="menu__link" id="new" data-category="4">
-                <a className="menu__link__sublink sublink" href="">
-                  <div className="sublink__image">
-                    <img src="./assets/presentation.jpeg" alt="presentation" />
-                  </div>
-                  <h3 className="sublink__title">Private Collection - Comfort</h3>
-                  <p className="sublink__descr">text4</p>
-                </a>
-                <span className="menu__link__text">menu_5</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-                </svg>
-              </li>
-
-            </ul>
-
-          </div>
         </li>
 
       </ul>

@@ -240,6 +240,8 @@
 
 .cart__icon {
     cursor: pointer;
+    z-index: 20;
+    position: relative;
 }
 
 .cart__block {
@@ -248,4 +250,21 @@
     @media (max-width: 520px) {
         position: static;
     }
+}
+
+.cart__counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    // background: white;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
 }

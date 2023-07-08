@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import {cartThunk} from './CartThunk'
+import { ProductType } from "types/types";
 
 type initialStateType = {
     products: [],
@@ -19,6 +20,11 @@ const cartSlice = createSlice({
         addProduct:(state: any, action) => {
             state.products = [...state.products, action.payload]
           },
+        deleteProduct: (state:any, action) => {
+            state.products = state.products.filter((product:ProductType) => {
+                return product.id !== action.payload
+            })
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -35,6 +41,6 @@ const cartSlice = createSlice({
 })
 
 const { reducer, actions } = cartSlice;
-export const {addProduct} = actions
+export const {addProduct, deleteProduct} = actions
 
 export default reducer;

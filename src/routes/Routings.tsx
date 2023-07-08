@@ -5,6 +5,7 @@ import { AboutPage } from "pages/AboutPage"
 import { NewsPage } from "pages/NewsPage"
 import { FaqPage } from "pages/FaqPage"
 import { CataloguePage } from "pages/CataloguePage"
+import { ProductPage } from "pages/ProductPage"
 
 export const Routings = () => {
   return (
@@ -16,6 +17,7 @@ export const Routings = () => {
         <Route path='/news' element={<NewsPage/>}/>
         <Route path='/faq' element={<FaqPage/>}/>
         <Route path='/catalogue' element={<CataloguePage/>}/>
+        <Route path='/product/:productId' element={<ProductPage/>}/>
         
       </Routes>
     </>
