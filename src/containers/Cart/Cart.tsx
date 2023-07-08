@@ -63,7 +63,6 @@ export const Cart = ({ active, setActive }: { active: boolean, setActive: Functi
 
           {products.length > 0 && <div className="cart__inner-products">
             {products && products.map((product: ProductType, index: number) => {
-              console.log(product.id)
               return (
                 <CartProduct
                   key={index}
