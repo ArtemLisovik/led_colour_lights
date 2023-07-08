@@ -14,7 +14,7 @@ export const ProductItem = ({name, newPrice, description, image, oldPrice, id}: 
     dispatch(addProduct({name, newPrice, description, image, oldPrice, id}))
   }
   return (
-    <Link to={`product/${id}`} className="new__card card">
+    <Link to={`/product/${id}`} className="new__card card">
     <img loading='lazy' src={image} alt="product image" className="new__card__photo card__photo"/>
     <h3 className="new__card__title card__title">{name}</h3>
     <p className="new__card__descr card__descr">{description}</p>
