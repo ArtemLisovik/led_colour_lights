@@ -6,6 +6,7 @@ import './Menu.scss'
 import { menuConfig } from './config/menuConfig'
 import { motion } from 'framer-motion'
 import { fromLeftToRight, textAnimation } from 'config/animation'
+import { BurgerSubMenu } from './components/BurgerSubMenu/BurgerSubMenu'
 
 export type menuType = 'ua' | 'ru' | 'en'
 
@@ -272,6 +273,7 @@ export const DesktopMenu = () => {
 
 const BurgerMenu = () => {
   const [menuActive, setMenuActive] = useState(false)
+  const [subMenuActive, setSubMenuActive] = useState('')
 
   useEffect(() => {
     if (menuActive) {
@@ -281,80 +283,46 @@ const BurgerMenu = () => {
     }
   }, [menuActive])
 
+  console.log(subMenuActive)
+
+
   return (
     <div className="burgerMenu">
-      <div className="burgerMenu__button">
+
+      <div onClick={() => setMenuActive(state => !state)} 
+        className="burgerMenu__button">
         <span className="burger__btn"></span>
       </div>
 
 
-      <div className="burgerMenu__wrapper">
+      <div className={menuActive ? `burgerMenu__wrapper _active` : `burgerMenu__wrapper`}>
         <ul className="burgerMenu__list">
-
 
           <li className="burgerMenu__list__item">
             <a href="" className="burgerMenu__list__item__link">Новинки</a>
-            <p className="arrow-right">›</p>
-
-            <div className="burgerSubmenu">
-              <ul className="burgerSubmenu__list">
-                <p className="burgerSubmenu__list__goBackButton">‹</p>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">menu__1</a>
-                  <p className="arrow-right">›</p>
-                  <div className="burgerSubmenu__info"></div>
-
-                </li>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">menu__1</a>
-                  <p className="arrow-right">›</p>
-                </li>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">menu__1</a>
-                  <p className="arrow-right">›</p>
-                </li>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">menu__1</a>
-                  <p className="arrow-right">›</p>
-                </li>
-
-              </ul>
-            </div>
           </li>
 
           <li className="burgerMenu__list__item">
-            <a href="" className="burgerMenu__list__item__link">Гірлянди</a>
+            <p onClick={() => setSubMenuActive('garlands')} className="burgerMenu__list__item__link">Гірлянди</p>
             <p className="arrow-right">›</p>
 
-            <div className="burgerSubmenu">
-              <ul className="burgerSubmenu__list">
-                <p className="burgerSubmenu__list__goBackButton">‹</p>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">Гірлянди кімнатні</a>
-                  <p className="arrow-right">›</p>
-                </li>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">Гірлянди вуличні</a>
-                  <p className="arrow-right">›</p>
-                </li>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">Аксессуари</a>
-                  <p className="arrow-right">›</p>
-                </li>
-
-              </ul>
-            </div>
+            <BurgerSubMenu 
+            func={setSubMenuActive}
+            selectedCategory={subMenuActive}
+            category='garlands'
+            options={[
+              {title: 'Гірлянди кімнатні',
+              link: 'products/garlands/room'},  
+              {title: 'Гірлянди вуличні',
+              link: 'products/garlands/street'},
+              {title: 'Аксессуари',
+              link: 'products/garlands/access'}
+            ]}/>
+            
           </li>
 
           <li className="burgerMenu__list__item">
-            <a href="" className="burgerMenu__list__item__link">Декор</a>
+            <a href="" className="burgerMenu__list__item__link">Свічки</a>
             <p className="arrow-right">›</p>
 
             <div className="burgerSubmenu">
@@ -396,7 +364,7 @@ const BurgerMenu = () => {
           </li>
 
           <li className="burgerMenu__list__item">
-            <a href="" className="burgerMenu__list__item__link">Набори</a>
+            <a href="" className="burgerMenu__list__item__link">Декор</a>
             <p className="arrow-right">›</p>
 
             <div className="burgerSubmenu">
@@ -429,34 +397,6 @@ const BurgerMenu = () => {
 
           <li className="burgerMenu__list__item">
             <a href="" className="burgerMenu__list__item__link">Акції</a>
-            <p className="arrow-right">›</p>
-
-            <div className="burgerSubmenu">
-              <ul className="burgerSubmenu__list">
-                <p className="burgerSubmenu__list__goBackButton">‹</p>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">menu__4</a>
-                  <p className="arrow-right">›</p>
-                </li>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">menu__4</a>
-                  <p className="arrow-right">›</p>
-                </li>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">menu__4</a>
-                  <p className="arrow-right">›</p>
-                </li>
-
-                <li className="burgerSubmenu__list__item">
-                  <a href="" className="burgerSubmenu__list__item__link">menu__4</a>
-                  <p className="arrow-right">›</p>
-                </li>
-
-              </ul>
-            </div>
           </li>
 
 

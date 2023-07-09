@@ -16,6 +16,7 @@
         transition: all 0.3s ease;
         opacity: 0;
         visibility: hidden;
+        z-index: 100;
 
         &._active {
             opacity: 1;
@@ -32,7 +33,7 @@
         &__item {
             display: flex;
             margin-top: 40px;
-            visibility: hidden;
+            // visibility: hidden;
             cursor: pointer;
 
             &__link {
@@ -120,13 +121,13 @@
             cursor: pointer;
             width: 26px;
             height: 26px;
-            visibility: hidden;
+            // visibility: hidden;
         }
 
         &__item {
             margin-top: 30px;
             display: flex;
-            visibility: hidden;
+            // visibility: hidden;
             transition: all 0.2s ease 0.2s;
 
             &__link {
