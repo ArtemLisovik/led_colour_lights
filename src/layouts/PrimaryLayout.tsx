@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Footer, Header, HelpBottomBlock, SectionPromo } from '../containers'
 import { Preloader } from 'ui/Preloader/Preloader'
+import { useAppSelector } from 'hooks/useRedux'
 
 
 type PrimaryLayoutProps = {
@@ -25,6 +26,14 @@ export const PrimaryLayout = ({ children, video, image, text, title, btn, dark, 
   useLayoutEffect(() => {
     setIsLoading(false)
   }, [])
+
+
+  const {filter} = useAppSelector(state => state.filterSlice)
+  
+  useEffect(() => {
+    console.log(filter)
+  }, [filter])
+
 
   return (
     <>

@@ -35,6 +35,29 @@
         font-size: 16px;
     }
 
+    &__extra-options{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    &__extra-options-item {
+        border: 1px solid #b4b4b4;
+        padding: 5px 0;
+        width: 40px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease
+    }
+    &__extra-options-item.selected {
+        background: rgb(221, 220, 220);
+    }
+    &__extra-options-item:hover {
+        border: 1px solid black;
+    }
+
 
     &__button {
         display: inline-block;
@@ -59,7 +82,7 @@
         color: #1a1919;
         opacity: 0.5;
         line-height: 25px;
-        height: 83px;
+        height: 43px;
         width: 300px;
     }
 

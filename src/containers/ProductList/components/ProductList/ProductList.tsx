@@ -6,6 +6,10 @@ import './ProductList.scss'
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from 'config/firebase'
 import { integrateImageRefToCard } from 'helpers/getImage';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'store/FilterSlice';
+import { useAppSelector } from 'hooks/useRedux';
 
 type ProductList = {
   title?: string,
@@ -16,7 +20,7 @@ type ProductList = {
   path2?: string
 }
 
-export const ProductList = ({ title, category, database, filter, path1, path2 }: ProductList) => {
+export const ProductList = ({ title, category, database, filter, path1 }: ProductList) => {
 
   const [products, setProducts] = useState<any>({ candles: '' })
 
@@ -25,9 +29,9 @@ export const ProductList = ({ title, category, database, filter, path1, path2 }:
     const func = async () => {
 
       if (category) {
-        const resultRef = doc(db, path1 as string, path2 as string)
+        const resultRef = doc(db, path1 as string, category as string)
         const docSnap = await getDoc(resultRef)
-        setProducts({ [category]: docSnap.data()?.[category] })
+        setProducts({ [category as any]: docSnap.data() })
       }
 
       else {
@@ -85,6 +89,7 @@ export const ProductList = ({ title, category, database, filter, path1, path2 }:
                       description={product.description}
                       id={product.id}
                       image={product.image}
+                      options={product.options}
                     />
                   )
                 })
@@ -101,6 +106,7 @@ export const ProductList = ({ title, category, database, filter, path1, path2 }:
                       description={product.description}
                       id={product.id}
                       image={product.image}
+                      options={product.options}
                     />
                     )
                   })

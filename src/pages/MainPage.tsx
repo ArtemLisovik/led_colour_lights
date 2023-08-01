@@ -24,9 +24,9 @@ export const MainPage = () => {
           
         <ExtraProposition />
 
-        <ProductList title='Новинки' category='NEWS' path1="pages" path2="main" database="products" />
+        <ProductList title='Новинки' category='news' path1="MainPage" database="products" />
         <SpecialOfferList />
-        <ProductList title='Популярные товары' path1="pages" path2="main" category='POPULAR' database="specials" />
+        <ProductList title='Популярные товары' path1="MainPage" category='popular' database="specials" />
 
       </PrimaryLayout>
     </>

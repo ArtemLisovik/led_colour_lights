@@ -16,7 +16,7 @@ export const Routings = () => {
         <Route path='/about' element={<AboutPage/>}/>
         <Route path='/news' element={<NewsPage/>}/>
         <Route path='/faq' element={<FaqPage/>}/>
-        <Route path='/catalogue' element={<CataloguePage/>}/>
+        <Route path='/catalogue/:category' element={<CataloguePage/>}/>
         <Route path='/product/:productId' element={<ProductPage/>}/>
         
       </Routes>

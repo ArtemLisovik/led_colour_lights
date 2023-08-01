@@ -11,7 +11,6 @@ import './styles/variables.scss'
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
 import { Preloader } from 'ui/Preloader/Preloader';
-import { useEffect, useState } from 'react';
 
 
 i18n
@@ -29,7 +28,6 @@ i18n
 
 
 function App() {
-  
 
   return (
     <Provider store={store}>

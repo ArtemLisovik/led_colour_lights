@@ -4,5 +4,6 @@ export type ProductType = {
     description: string,
     oldPrice?: string,
     newPrice: string,
-    image: string
+    image: string,
+    options?: []
 }

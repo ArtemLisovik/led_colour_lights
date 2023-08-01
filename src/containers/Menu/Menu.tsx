@@ -7,6 +7,8 @@ import { menuConfig } from './config/menuConfig'
 import { motion } from 'framer-motion'
 import { fromLeftToRight, textAnimation } from 'config/animation'
 import { BurgerSubMenu } from './components/BurgerSubMenu/BurgerSubMenu'
+import { useDispatch } from 'react-redux'
+import { setFilter } from 'store/FilterSlice'
 
 export type menuType = 'ua' | 'ru' | 'en'
 
@@ -24,7 +26,6 @@ export const Menu = () => {
 
   useEffect(() => {
     getWindowSize()
-
   }, []);
 
   useEffect(() => {
@@ -46,11 +47,18 @@ export const Menu = () => {
 
 
 export const DesktopMenu = () => {
+
   const [menuOpened, setMenuOpened] = useState('')
 
   useEffect(() => {
     menuOpened === '' ? document.body.style.overflowY = 'scroll' : document.body.style.overflow = 'hidden'
   }, [menuOpened])
+
+  const dispatch = useDispatch()
+
+  // const setNewFilter = (filter: string) => {
+  //   dispatch(setFilter(filter))
+  // }
 
   return (
     <div className="menu">
@@ -67,14 +75,15 @@ export const DesktopMenu = () => {
 
         <li className="menu__list__item category">
           <p
-            onClick={() => setMenuOpened('news')}
+            // onClick={() => setMenuOpened('news')}
             className="menu__list__item__link">
-            <Link to='products/news'>Новинки</Link>
+            <Link to='/catalogue/news'>Новинки</Link>
           </p>
 
         </li>
 
-        <li className="menu__list__item category">
+        <li
+          className="menu__list__item category">
           <p
             onClick={() => setMenuOpened('girlyandus')}
             className="menu__list__item__link">Гірлянди</p>
@@ -97,7 +106,10 @@ export const DesktopMenu = () => {
                   <h3 className="sublink__title">Private Collection - Comfort</h3>
                   <p className="sublink__descr">text1</p>
                 </a>
-                <span className="menu__link__text">Гірлянди кімнатні</span>
+                <Link
+                  to='/catalogue/garlands'
+                  onClick={() => setMenuOpened('')}
+                >Гірлянди кімнатні</Link>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
                   <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
                 </svg>
@@ -117,7 +129,9 @@ export const DesktopMenu = () => {
                   <h3 className="sublink__title">Private Collection - Comfort</h3>
                   <p className="sublink__descr">text2</p>
                 </a>
-                <span className="menu__link__text">Гірлянди вуличні</span>
+                <Link
+                  onClick={() => setMenuOpened('')}
+                  to='/catalogue/garlands'>Гірлянди вуличні</Link>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
                   <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
                 </svg>
@@ -130,7 +144,9 @@ export const DesktopMenu = () => {
                 variants={fromLeftToRight}
                 custom={0.5}
                 className="menu__link">
-                <span className="menu__link__text">Аксессуари</span>
+                <Link
+                  onClick={() => setMenuOpened('')}
+                  to='/catalogue/garlands'>Аксессуари</Link>
               </motion.li>
 
             </ul>}
@@ -155,7 +171,10 @@ export const DesktopMenu = () => {
                 custom={0.3}
                 className="menu__link">
 
-                <span className="menu__link__text">Свічки</span>
+                <Link
+                  onClick={() => setMenuOpened('')}
+                  to='/catalogue/candles'>Свічки</Link>
+
               </motion.li>
 
               <motion.li
@@ -165,7 +184,10 @@ export const DesktopMenu = () => {
                 variants={fromLeftToRight}
                 custom={0.4}
                 className="menu__link">
-                <span className="menu__link__text">Аксессуари</span>
+                <Link
+                  onClick={() => setMenuOpened('')}
+                  to='/catalogue/candles'>Аксессуари</Link>
+
               </motion.li>
 
             </ul>
@@ -289,7 +311,7 @@ const BurgerMenu = () => {
   return (
     <div className="burgerMenu">
 
-      <div onClick={() => setMenuActive(state => !state)} 
+      <div onClick={() => setMenuActive(state => !state)}
         className="burgerMenu__button">
         <span className="burger__btn"></span>
       </div>
@@ -306,19 +328,25 @@ const BurgerMenu = () => {
             <p onClick={() => setSubMenuActive('garlands')} className="burgerMenu__list__item__link">Гірлянди</p>
             <p className="arrow-right">›</p>
 
-            <BurgerSubMenu 
-            func={setSubMenuActive}
-            selectedCategory={subMenuActive}
-            category='garlands'
-            options={[
-              {title: 'Гірлянди кімнатні',
-              link: 'products/garlands/room'},  
-              {title: 'Гірлянди вуличні',
-              link: 'products/garlands/street'},
-              {title: 'Аксессуари',
-              link: 'products/garlands/access'}
-            ]}/>
-            
+            <BurgerSubMenu
+              func={setSubMenuActive}
+              selectedCategory={subMenuActive}
+              category='garlands'
+              options={[
+                {
+                  title: 'Гірлянди кімнатні',
+                  link: 'products/garlands/room'
+                },
+                {
+                  title: 'Гірлянди вуличні',
+                  link: 'products/garlands/street'
+                },
+                {
+                  title: 'Аксессуари',
+                  link: 'products/garlands/access'
+                }
+              ]} />
+
           </li>
 
           <li className="burgerMenu__list__item">
