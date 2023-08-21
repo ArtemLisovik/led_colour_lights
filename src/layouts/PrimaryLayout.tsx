@@ -30,9 +30,9 @@ export const PrimaryLayout = ({ children, video, image, text, title, btn, dark, 
 
   const {filter} = useAppSelector(state => state.filterSlice)
   
-  useEffect(() => {
-    console.log(filter)
-  }, [filter])
+  // useEffect(() => {
+  //   // console.log(filter)
+  // }, [filter])
 
 
   return (

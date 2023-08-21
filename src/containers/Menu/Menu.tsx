@@ -56,9 +56,6 @@ export const DesktopMenu = () => {
 
   const dispatch = useDispatch()
 
-  // const setNewFilter = (filter: string) => {
-  //   dispatch(setFilter(filter))
-  // }
 
   return (
     <div className="menu">
@@ -77,7 +74,9 @@ export const DesktopMenu = () => {
           <p
             // onClick={() => setMenuOpened('news')}
             className="menu__list__item__link">
-            <Link to='/catalogue/news'>Новинки</Link>
+            <Link 
+                onClick={() => setMenuOpened('')}
+                to='/catalogue/news'>Новинки</Link>
           </p>
 
         </li>
@@ -107,7 +106,7 @@ export const DesktopMenu = () => {
                   <p className="sublink__descr">text1</p>
                 </a>
                 <Link
-                  to='/catalogue/garlands'
+                  to='/catalogue/garlands/roomGarlands'
                   onClick={() => setMenuOpened('')}
                 >Гірлянди кімнатні</Link>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
@@ -131,7 +130,7 @@ export const DesktopMenu = () => {
                 </a>
                 <Link
                   onClick={() => setMenuOpened('')}
-                  to='/catalogue/garlands'>Гірлянди вуличні</Link>
+                  to='/catalogue/garlands/streetGarlands'>Гірлянди вуличні</Link>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#a4a4a4">
                   <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
                 </svg>
@@ -146,7 +145,7 @@ export const DesktopMenu = () => {
                 className="menu__link">
                 <Link
                   onClick={() => setMenuOpened('')}
-                  to='/catalogue/garlands'>Аксессуари</Link>
+                  to='/catalogue/garlands/accessories'>Аксессуари</Link>
               </motion.li>
 
             </ul>}
@@ -173,7 +172,7 @@ export const DesktopMenu = () => {
 
                 <Link
                   onClick={() => setMenuOpened('')}
-                  to='/catalogue/candles'>Свічки</Link>
+                  to='/catalogue/candles/candles'>Свічки</Link>
 
               </motion.li>
 
@@ -186,7 +185,7 @@ export const DesktopMenu = () => {
                 className="menu__link">
                 <Link
                   onClick={() => setMenuOpened('')}
-                  to='/catalogue/candles'>Аксессуари</Link>
+                  to='/catalogue/candles/accessories'>Аксессуари</Link>
 
               </motion.li>
 
@@ -214,7 +213,10 @@ export const DesktopMenu = () => {
                 custom={0.3}
                 className="menu__link">
 
-                <span className="menu__link__text">Проектори</span>
+                <Link
+                  onClick={() => setMenuOpened('')}
+                  to='/catalogue/decor/projectors'
+                  className="menu__link__text">Проектори</Link>
               </motion.li>
 
               <motion.li
@@ -224,7 +226,10 @@ export const DesktopMenu = () => {
                 variants={fromLeftToRight}
                 custom={0.4}
                 className="menu__link">
-                <span className="menu__link__text">Нічники</span>
+                <Link 
+                onClick={() => setMenuOpened('')}
+                to='/catalogue/decor/nightLights'
+                className="menu__link__text">Нічники</Link>
               </motion.li>
 
               <motion.li
@@ -235,7 +240,10 @@ export const DesktopMenu = () => {
                 custom={0.5}
                 className="menu__link">
 
-                <span className="menu__link__text">LED дерева</span>
+                <Link 
+                onClick={() => setMenuOpened('')}
+                to='/catalogue/decor/ledTrees'
+                className="menu__link__text">LED дерева</Link>
               </motion.li>
 
               <motion.li
@@ -245,7 +253,10 @@ export const DesktopMenu = () => {
                 variants={fromLeftToRight}
                 custom={0.6}
                 className="menu__link">
-                <span className="menu__link__text">Подарунові набори</span>
+                <Link 
+                onClick={() => setMenuOpened('')}
+                to='/catalogue/decor/giftSets'
+                className="menu__link__text">Подарунові набори</Link>
               </motion.li>
 
               <motion.li
@@ -256,7 +267,10 @@ export const DesktopMenu = () => {
                 custom={0.7}
                 className="menu__link">
 
-                <span className="menu__link__text">Ялинкові прикраси</span>
+                <Link 
+                onClick={() => setMenuOpened('')}
+                to='/catalogue/decor/christmasTreeDecorations'
+                className="menu__link__text">Ялинкові прикраси</Link>
 
               </motion.li>
 
@@ -267,20 +281,21 @@ export const DesktopMenu = () => {
                 variants={fromLeftToRight}
                 custom={0.8}
                 className="menu__link">
-                <span className="menu__link__text">Новорічні фігури</span>
+                <Link 
+                onClick={() => setMenuOpened('')}
+                to='/catalogue/decor/christmasFigures'
+                className="menu__link__text">Новорічні фігури</Link>
               </motion.li>
             </ul>
           }
-
         </li>
 
 
 
         <li className="menu__list__item category">
           <p
-            onClick={() => setMenuOpened('sale')}
             className="menu__list__item__link">
-            <Link to='products/sale'>Акції</Link>
+            <Link to='/catalogue/sale'>Акції</Link>
 
           </p>
 

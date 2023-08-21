@@ -7,25 +7,28 @@ import { useTranslation } from "react-i18next"
 import video from 'assets/img/promo.mp4'
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { db } from "config/firebase"
+import { doc, getDoc } from "firebase/firestore"
 
 export const CataloguePage = () => {
   const { t } = useTranslation()
 
   const [activeFilter, setActiveFilter] = useState<string>('')
+  const [subcategory, setSubCategory] = useState<any>('')
 
   const category = useParams().category
+  const sub = useParams().subcategory
 
   useEffect(() => {
-
     if (category === 'all') {
       setActiveFilter('')
+      setSubCategory('')
     } else {
       setActiveFilter(category as string)
+      setSubCategory(sub as string)
     }
-  }, [category])
-
-  console.log(activeFilter)
-
+  }, [category, sub])
+  
   return (
     <>
       <Helmet>
@@ -37,18 +40,26 @@ export const CataloguePage = () => {
         title='Catalogue'
         text='All products'>
 
-        {
+        <ProductList
+          path1='products'
+          database="products"
+          subcategory={subcategory}
+          category={activeFilter}
+          filter={true} />
+
+        {/* {
           (activeFilter as string).length < 1 ?
             <ProductList
               path1='products'
               database="products"
+              subcategory={subcategory}
+              category={activeFilter}
               filter={true} /> :
             <ProductList
               path1='products'
               database="products"
-              category={activeFilter}
               filter={true} />
-        }
+        } */}
 
 
       </PrimaryLayout>

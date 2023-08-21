@@ -5,11 +5,8 @@ import './ProductList.scss'
 
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from 'config/firebase'
-import { integrateImageRefToCard } from 'helpers/getImage';
-import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setFilter } from 'store/FilterSlice';
-import { useAppSelector } from 'hooks/useRedux';
+import { ProductType } from 'types/types';
+
 
 type ProductList = {
   title?: string,
@@ -17,23 +14,28 @@ type ProductList = {
   database: 'products' | 'specials'
   filter?: boolean,
   path1?: string,
-  path2?: string
+  path2?: string,
+  subcategory?: string
 }
 
-export const ProductList = ({ title, category, database, filter, path1 }: ProductList) => {
-
+export const ProductList = ({ title, category, database, filter, path1, subcategory }: ProductList) => {
   const [products, setProducts] = useState<any>({ candles: '' })
 
   useEffect(() => {
-
+    console.log(`category in ProductList - ${category}`)
     const func = async () => {
 
       if (category) {
         const resultRef = doc(db, path1 as string, category as string)
         const docSnap = await getDoc(resultRef)
-        setProducts({ [category as any]: docSnap.data() })
-      }
+        if (subcategory) {
+          setProducts({ [subcategory ? subcategory : category as any]: docSnap.data()?.[subcategory as any] })
+        }
 
+        else {
+          setProducts({ [category as any]: docSnap.data() })
+        }
+      }
       else {
         let products: any = {}
         const querySnapshot = await getDocs(collection(db, "products"));
@@ -45,7 +47,7 @@ export const ProductList = ({ title, category, database, filter, path1 }: Produc
     }
 
     func()
-  }, [])
+  }, [category, subcategory])
 
   return (
     <section
@@ -76,6 +78,57 @@ export const ProductList = ({ title, category, database, filter, path1 }: Produc
           </div>}
 
           {
+           Object.values(Object.values(products)[0] as any).map((product:any, index:number) => {
+            return (
+              <ProductItem
+                    key={index}
+                    name={product.name}
+                    oldPrice={product.oldPrice}
+                    newPrice={product.newPrice}
+                    description={product.description}
+                    id={product.id}
+                    image={product.image}
+                    options={product.options}
+                  />
+            )
+           })
+          //   : 
+          //  Object.values(products)
+          //  .map((product: any, index: any) => {
+          //    return (
+          //      <ProductItem
+          //        key={index}
+          //        name={product.name}
+          //        oldPrice={product.oldPrice}
+          //        newPrice={product.newPrice}
+          //        description={product.description}
+          //        id={product.id}
+          //        image={product.image}
+          //        options={product.options}
+          //      />
+          //    )
+          //  })
+          // }
+          }
+          {/* {
+            Object.values(products)
+              .map((product: any, index: any) => {
+                return (
+                  <ProductItem
+                    key={index}
+                    name={product.name}
+                    oldPrice={product.oldPrice}
+                    newPrice={product.newPrice}
+                    description={product.description}
+                    id={product.id}
+                    image={product.image}
+                    options={product.options}
+                  />
+                )
+              })}
+               */}
+
+          {/* {
 
             products[category as any] ?
               Object.values(products[category as any])
@@ -111,7 +164,7 @@ export const ProductList = ({ title, category, database, filter, path1 }: Produc
                     )
                   })
                 })
-          }
+          } */}
 
         </div>
       </div>
