@@ -16,7 +16,7 @@ export const SectionPromo = ({image, video, title, text, btn, btnLink}: SectionP
     <section className="promo">
 
       {image && <img className='promo__poster' src={image}/>}
-      {video && <video autoPlay loop muted={true}>
+      {video && <video autoPlay loop muted={true} playsInline>
         <source src={promo} type="video/mp4"/>
         {/* <source src="./assets/promo.webm" type="video/webm"> */}
     </video>}
