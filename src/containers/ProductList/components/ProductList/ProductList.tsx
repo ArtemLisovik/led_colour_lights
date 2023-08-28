@@ -18,11 +18,12 @@ type ProductList = {
   subcategory?: string
 }
 
+console.log()
+
 export const ProductList = ({ title, category, database, filter, path1, subcategory }: ProductList) => {
   const [products, setProducts] = useState<any>({ candles: '' })
 
   useEffect(() => {
-    console.log(`category in ProductList - ${category}`)
     const func = async () => {
 
       if (category) {
@@ -89,9 +90,12 @@ export const ProductList = ({ title, category, database, filter, path1, subcateg
                     id={product.id}
                     image={product.image}
                     options={product.options}
+                    length={product.length}
+                    colors={product.colors}
                   />
             )
            })
+
           //   : 
           //  Object.values(products)
           //  .map((product: any, index: any) => {

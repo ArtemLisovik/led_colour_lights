@@ -220,8 +220,48 @@ a {
 
     &__text {
         margin-top: 20px;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 28px;
+    }
+
+    &__colors {
+        display: flex;
+        gap: 10px;
+        margin: 0 auto;
+        width: max-content;
+        margin-top: 15px;
+    }
+    &__colors-item {
+        width: 30px;
+        height: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+    }
+
+    &__length {
+        display: flex;
+        gap: 10px;
+        margin: 10px auto;
+        width: max-content;
+    }
+    &__length-title {
+        margin-top: 10px;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    &__length-item {
+        padding: 8px 18px;
+        border: 1px solid #b4b4b4;
+        cursor: pointer;
+        transition: 0.3s ease all;
+    }
+    &__length-item:hover {
+        border: 1px solid black;
+    }
+    &__length-item.selected {
+        border: 1px solid black;
     }
 
     &__price {

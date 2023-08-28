@@ -7,19 +7,20 @@
     &__wrapper {
         position: absolute;
         top: 79px;
-        left: 0;
+        left: -100vw;
         width: 100vw;
         height: 100vh;
         display: block;
         background: #222222;
         z-index: 20;
         transition: all 0.3s ease;
-        opacity: 0;
+        // opacity: 0;
         visibility: hidden;
         z-index: 100;
 
         &._active {
-            opacity: 1;
+            left: 0;
+            // opacity: 1;
             visibility: visible;
         }
 
@@ -98,15 +99,13 @@
     background: #222222;
     width: 100vw;
     height: 100vh;
-    left: 0px;
+    left: -100vw;
     top: -40px;
-    visibility: hidden;
     transition: all 0.8s ease;
-    opacity: 0;
 
     &._active {
-        visibility: visible;
-        opacity: 1;
+        left: 0;
+
     }
 
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from 'store/store'
-import { Button } from 'ui'
+import { Button, P } from 'ui'
 import { SecondaryLayout } from 'layouts/SecondaryLayout'
 import { addProduct } from 'containers/Cart/store/CartSlice'
 import { ProductType } from 'types/types'
@@ -14,24 +14,37 @@ import { db } from 'config/firebase'
 export const ProductPage = () => {
 
     const [product, setProduct] = useState<ProductType | null>()
+    const [selectedColor, setSelectedColor] = useState<string | null>()
+    const [selectedLength, setSelectedLength] = useState<string | null>()
 
+    const colorHandler = (color: string) => {
+        setSelectedColor(color)
+    }
+
+    const lengthHandler = (length: string) => {
+        setSelectedLength(length)
+    }
+
+    const category = useParams().category as string
+    const sub = useParams().subcategory as string
     const id = useParams().productId as string
+
+    console.log(category, sub)
+
 
     const filters = ['candles', 'decor', 'garlands', 'news', 'stock']
 
     useEffect(() => {
-
-        const getProduct = () => {
-            filters.forEach(async (filter) => {
-                const productRef = doc(db, 'products', filter)
-                const productSnap = await getDoc(productRef)
-                let result = productSnap.data()?.[id]
-                
-                result ? setProduct(productSnap.data()?.[id]) : result = false
-            })
+        const getProduct = async () => {
+            const productRef = doc(db, 'products', category)
+            const productRes = await getDoc(productRef)
+            // setProduct(productRes.data()?.[sub][id] as ProductType)
+            setProduct(productRes.data()?.[sub][id] as any)
         }
         getProduct()
     }, [])
+
+    console.log(product)
 
     return (
         <SecondaryLayout>
@@ -62,9 +75,48 @@ export const ProductPage = () => {
                         <div className="primary__description description">
                             <h3 className="description__subtitle">{product?.name}</h3>
                             <h2 className="description__title">{product?.description}</h2>
-                            <p className="description__notification">car perfume, 6 gr</p>
-                            <p className="description__text">Life is a journey, enjoy the ride with this car perfume based
-                                on the empowering and musky scents of oudh and patchouli. The frag ...</p>
+
+                            {product?.colors && <ul className="description__colors">
+
+                                {product.colors.map((color: any) => {
+                                    return (
+                                        <li
+                                            key={color}
+                                            onClick={() => colorHandler(color)}
+                                            className="description__colors-item"
+                                            style={{ background: color, boxShadow: selectedColor === color ? `0 0 20px ${color}` : 'none' }}>
+                                        </li>
+                                    )
+                                })}
+
+                            </ul>
+                            }
+
+
+                            {/* <p className="description__notification">car perfume, 6 gr</p> */}
+                            <p className="description__text">{product?.description}</p>
+                            {product?.length &&
+                                <>
+                                    <p className='description__length-title'>Довжина:</p>
+                                    <ul className="description__length">
+                                        {product?.length.map(length => {
+                                            return (
+                                                <li
+                                                    onClick={(e) => lengthHandler(length)}
+                                                    key={length}
+                                                    className={selectedLength === length ? 'description__length-item selected' : 'description__length-item'}
+
+                                                >
+                                                    {length} м
+                                                </li>
+                                            )
+                                        })}
+                                    </ul>
+                                </>
+
+
+
+                            }
                             <p className="description__price">{product?.newPrice}<span> грн</span></p>
 
                             <div className='button__wrapper'>

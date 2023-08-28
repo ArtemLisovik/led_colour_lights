@@ -13,9 +13,10 @@ type BurgerSubMenuType = {
     category: string,
     options: any,
     func: Function,
-    selectedCategory: string
+    selectedCategory: string,
+    menuHandler: Function
 }
-export const BurgerSubMenu = ({ category, options, func, selectedCategory }: BurgerSubMenuType) => {
+export const BurgerSubMenu = ({ category, options, func, selectedCategory, menuHandler }: BurgerSubMenuType) => {
 
     const [isActive, setIsActive] = useState('')
 
@@ -35,7 +36,9 @@ export const BurgerSubMenu = ({ category, options, func, selectedCategory }: Bur
                     return (
                         <li key={item.title}
                         className="burgerSubmenu__list__item">
-                            <Link to={item.link} className="burgerSubmenu__list__item__link">{item.title}</Link>
+                            <Link 
+                            onClick={() => menuHandler()}
+                            to={item.link} className="burgerSubmenu__list__item__link">{item.title}</Link>
                             <p className="arrow-right">›</p>
                         </li>)
                 })}

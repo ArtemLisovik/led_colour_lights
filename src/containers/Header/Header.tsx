@@ -16,6 +16,8 @@ export const Header = () => {
     setCart((state) => !state)
   }
 
+  // console.log(products)
+
   return (
     <header className="header">
       <div className="container">

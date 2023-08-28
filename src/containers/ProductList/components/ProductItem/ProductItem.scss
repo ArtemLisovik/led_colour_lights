@@ -15,6 +15,20 @@
     margin-bottom: 50px;
     cursor: auto;
 
+    &__colors-list {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    &__colors-item {
+        width: 30px;
+        height: 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+
     &__old-price {
         color: #8c8c8c;
         text-decoration: line-through;
@@ -43,7 +57,7 @@
     }
     &__extra-options-item {
         border: 1px solid #b4b4b4;
-        padding: 5px 0;
+        padding: 2px 2px;
         width: 40px;
         margin-bottom: 5px;
         font-size: 14px;

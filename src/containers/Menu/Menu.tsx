@@ -54,9 +54,6 @@ export const DesktopMenu = () => {
     menuOpened === '' ? document.body.style.overflowY = 'scroll' : document.body.style.overflow = 'hidden'
   }, [menuOpened])
 
-  const dispatch = useDispatch()
-
-
   return (
     <div className="menu">
 
@@ -312,6 +309,10 @@ const BurgerMenu = () => {
   const [menuActive, setMenuActive] = useState(false)
   const [subMenuActive, setSubMenuActive] = useState('')
 
+  const menuHandler = () => {
+    setMenuActive(state => !state)
+  }
+
   useEffect(() => {
     if (menuActive) {
       (document.querySelector('body') as HTMLBodyElement).style.overflow = 'hidden'
@@ -319,9 +320,6 @@ const BurgerMenu = () => {
       (document.querySelector('body') as HTMLBodyElement).style.overflow = 'scroll'
     }
   }, [menuActive])
-
-  console.log(subMenuActive)
-
 
   return (
     <div className="burgerMenu">
@@ -336,7 +334,9 @@ const BurgerMenu = () => {
         <ul className="burgerMenu__list">
 
           <li className="burgerMenu__list__item">
-            <a href="" className="burgerMenu__list__item__link">Новинки</a>
+            <Link 
+              className="burgerMenu__list__item__link"
+                to='/catalogue/news'>Новинки</Link>
           </li>
 
           <li className="burgerMenu__list__item">
@@ -344,31 +344,50 @@ const BurgerMenu = () => {
             <p className="arrow-right">›</p>
 
             <BurgerSubMenu
+              menuHandler={menuHandler}
               func={setSubMenuActive}
               selectedCategory={subMenuActive}
               category='garlands'
               options={[
                 {
                   title: 'Гірлянди кімнатні',
-                  link: 'products/garlands/room'
+                  link: '/catalogue/garlands/roomGarlands'
                 },
                 {
                   title: 'Гірлянди вуличні',
-                  link: 'products/garlands/street'
+                  link: '/catalogue/garlands/streetGarlands'
                 },
                 {
                   title: 'Аксессуари',
-                  link: 'products/garlands/access'
+                  link: '/catalogue/garlands/accessories'
                 }
               ]} />
 
           </li>
 
           <li className="burgerMenu__list__item">
-            <a href="" className="burgerMenu__list__item__link">Свічки</a>
+            <p 
+            onClick={() => setSubMenuActive('candles')}
+            className="burgerMenu__list__item__link">Свічки</p>
             <p className="arrow-right">›</p>
 
-            <div className="burgerSubmenu">
+            <BurgerSubMenu
+              menuHandler={menuHandler}
+              func={setSubMenuActive}
+              selectedCategory={subMenuActive}
+              category='candles'
+              options={[
+                {
+                  title: 'Свічки',
+                  link: '/catalogue/candles/candles'
+                },
+                {
+                  title: 'Акссесуарі',
+                  link: '/catalogue/candles/accessories'
+                },
+              ]} />
+
+            {/* <div className="burgerSubmenu">
               <ul className="burgerSubmenu__list">
                 <p className="burgerSubmenu__list__goBackButton">‹</p>
 
@@ -403,14 +422,48 @@ const BurgerMenu = () => {
                 </li>
 
               </ul>
-            </div>
+            </div> */}
           </li>
 
           <li className="burgerMenu__list__item">
-            <a href="" className="burgerMenu__list__item__link">Декор</a>
+            <p 
+            onClick={() => setSubMenuActive('decor')}
+            className="burgerMenu__list__item__link">Декор</p>
             <p className="arrow-right">›</p>
 
-            <div className="burgerSubmenu">
+            <BurgerSubMenu
+              menuHandler={menuHandler}
+              func={setSubMenuActive}
+              selectedCategory={subMenuActive}
+              category='decor'
+              options={[
+                {
+                  title: 'Проектори',
+                  link: '/catalogue/decor/projectors'
+                },
+                {
+                  title: 'Нічники',
+                  link: '/catalogue/decor/nightLights'
+                },
+                {
+                  title: 'LED дерева',
+                  link: '/catalogue/decor/ledTrees'
+                },
+                {
+                  title: 'Подарункові набори',
+                  link: '/catalogue/decor/giftSets'
+                },
+                {
+                  title: 'Ялинкові прикраси',
+                  link: '/catalogue/decor/christmasTreeDecorations'
+                },
+                {
+                  title: 'Новорічні фігури',
+                  link: '/catalogue/decor/christmasFigures'
+                }
+              ]} />
+
+            {/* <div className="burgerSubmenu">
               <ul className="burgerSubmenu__list">
                 <p className="burgerSubmenu__list__goBackButton">‹</p>
 
@@ -435,16 +488,15 @@ const BurgerMenu = () => {
                 </li>
 
               </ul>
-            </div>
+            </div> */}
           </li>
 
           <li className="burgerMenu__list__item">
-            <a href="" className="burgerMenu__list__item__link">Акції</a>
+       
+            <Link 
+              className="burgerMenu__list__item__link"
+                to='/catalogue/sale'>Акції</Link>
           </li>
-
-
-
-
         </ul>
       </div>
 

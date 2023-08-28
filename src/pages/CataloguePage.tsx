@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet"
 import { useTranslation } from "react-i18next"
 
 import video from 'assets/img/promo.mp4'
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { db } from "config/firebase"
 import { doc, getDoc } from "firebase/firestore"
@@ -18,6 +18,7 @@ export const CataloguePage = () => {
 
   const category = useParams().category
   const sub = useParams().subcategory
+
 
   useEffect(() => {
     if (category === 'all') {

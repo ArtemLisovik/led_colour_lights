@@ -11,6 +11,8 @@ import './styles/variables.scss'
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
 import { Preloader } from 'ui/Preloader/Preloader';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 i18n
@@ -34,6 +36,7 @@ function App() {
        <BrowserRouter>
       <Routings />
     </BrowserRouter>
+    <ToastContainer/>
     </Provider>
   );
 }
