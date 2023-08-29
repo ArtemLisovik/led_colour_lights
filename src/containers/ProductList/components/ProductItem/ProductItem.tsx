@@ -5,6 +5,16 @@ import { addProduct } from 'containers/Cart/store/CartSlice'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Zoom, toast } from 'react-toastify'
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 
 export const ProductItem = ({ colors, name, newPrice, description, image, oldPrice, id, options, length }: ProductType) => {
 
@@ -92,6 +102,7 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
     }
   }
 
+  console.log(selectedColor?.[1])
   // if (colors) {
   //   Object.entries(colors).map((color:any) => {
   //     console.log(color)
@@ -99,7 +110,42 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
   // }
   return (
     <Link to={`${id}`} className="new__card card">
-      <img loading='lazy' src={selectedColor?.[1]} alt="product image" className="new__card__photo card__photo" />
+
+
+                   {selectedColor?.[1] && <Swiper
+                        // install Swiper modules
+                        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+                        spaceBetween={0}
+                        slidesPerView={1}
+                        speed={600}
+                        loop={true}
+                        navigation={false}
+                        pagination={{ clickable: true }}
+                        scrollbar={{ draggable: true }}
+                        // autoplay={{
+                        //     delay: 2500,
+                        //     disableOnInteraction: false,
+                        // }}
+                        >
+
+                            {
+                              selectedColor[1].map((image:any) => {
+                                return (
+                                  <SwiperSlide>
+                                    <img loading='lazy' src={image} alt="product image" className="new__card__photo card__photo" />
+                                  </SwiperSlide>
+                                  
+                                )
+                              })
+                            }
+                       
+
+
+
+                    </Swiper>}
+
+
+      {/* <img loading='lazy' src={selectedColor?.[1]} alt="product image" className="new__card__photo card__photo" /> */}
 
 
       <h3 className="new__card__title card__title">{name}</h3>
