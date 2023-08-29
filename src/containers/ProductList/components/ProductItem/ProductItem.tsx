@@ -25,12 +25,10 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
     if (colors) {
       setSelectedColor(Object.entries(colors)[0])
     }
-    
+
   }, [colors])
 
   const dispatch = useDispatch()
-
-
 
   const optionHandler = (e: any, option: any) => {
     e.preventDefault()
@@ -102,61 +100,48 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
     }
   }
 
-  console.log(selectedColor?.[1])
-  // if (colors) {
-  //   Object.entries(colors).map((color:any) => {
-  //     console.log(color)
-  //   })
-  // }
   return (
-    <Link to={`${id}`} className="new__card card">
+    <div className="new__card card">
 
+      {selectedColor?.[1] &&  <Swiper
+          // install Swiper modules
+          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          spaceBetween={0}
+          slidesPerView={1}
+          speed={600}
+          loop={true}
+          navigation={false}
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}>
+          {
+            selectedColor[1].map((image: any) => {
+              return (
+                <SwiperSlide>
+                  <Link to={`${id}`} className="card__image">
+                  <img loading='lazy' src={image} alt="product image" className="new__card__photo card__photo" />
+                  </Link>
+                  
+                </SwiperSlide>
 
-                   {selectedColor?.[1] && <Swiper
-                        // install Swiper modules
-                        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-                        spaceBetween={0}
-                        slidesPerView={1}
-                        speed={600}
-                        loop={true}
-                        navigation={false}
-                        pagination={{ clickable: true }}
-                        scrollbar={{ draggable: true }}
-                        // autoplay={{
-                        //     delay: 2500,
-                        //     disableOnInteraction: false,
-                        // }}
-                        >
+              )
+            })
+          }
+        </Swiper>}
 
-                            {
-                              selectedColor[1].map((image:any) => {
-                                return (
-                                  <SwiperSlide>
-                                    <img loading='lazy' src={image} alt="product image" className="new__card__photo card__photo" />
-                                  </SwiperSlide>
-                                  
-                                )
-                              })
-                            }
-                       
-
-
-
-                    </Swiper>}
-
-
-      {/* <img loading='lazy' src={selectedColor?.[1]} alt="product image" className="new__card__photo card__photo" /> */}
 
 
       <h3 className="new__card__title card__title">{name}</h3>
       <p className="new__card__descr card__descr">{description}</p>
 
-
       {
         <>
           <p className="card__extra-options-title">Колір:</p>
-          <ul className="card__colors-list">       
-            
+          <ul className="card__colors-list">
+
             {colors && Object.entries(colors).map(color => {
               console.log(color[0] === selectedColor?.[0])
               return (
@@ -198,6 +183,6 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
       <button
         onClick={(e) => buyProduct(e)}
         className="popular__card__btn card__button">Купить</button>
-    </Link>
+    </div>
   )
 }
