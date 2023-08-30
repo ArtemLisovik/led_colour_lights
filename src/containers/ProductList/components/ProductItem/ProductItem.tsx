@@ -25,7 +25,6 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
     if (colors) {
       setSelectedColor(Object.entries(colors)[0])
     }
-
   }, [colors])
 
   const dispatch = useDispatch()
@@ -180,7 +179,7 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
       <p className="new__card__price card__price">{newPrice} грн {oldPrice && <span className='card__old-price'>{oldPrice} грн</span>}</p>
       <button
         onClick={(e) => buyProduct(e)}
-        className="popular__card__btn card__button">Купить</button>
+        className="popular__card__btn card__button">Купити</button>
     </div>
   )
 }

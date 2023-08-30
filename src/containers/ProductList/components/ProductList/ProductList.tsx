@@ -6,6 +6,7 @@ import './ProductList.scss'
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from 'config/firebase'
 import { ProductType } from 'types/types';
+import { Link, useParams } from 'react-router-dom';
 
 
 type ProductList = {
@@ -18,7 +19,6 @@ type ProductList = {
   subcategory?: string
 }
 
-console.log()
 
 export const ProductList = ({ title, category, database, filter, path1, subcategory }: ProductList) => {
   const [products, setProducts] = useState<any>({ candles: '' })
@@ -50,6 +50,11 @@ export const ProductList = ({ title, category, database, filter, path1, subcateg
     func()
   }, [category, subcategory])
 
+
+  const cat = useParams().category
+  const subCat = useParams().subcategory
+
+
   return (
     <section
       style={filter ? { marginTop: '-250px', position: 'relative', zIndex: '50' } : {}}
@@ -60,15 +65,15 @@ export const ProductList = ({ title, category, database, filter, path1, subcateg
 
           {filter && <div className="products__filter filter">
             <ul className="filter__list">
+              {/* <li className="filter__item">
+                <Link to="./index.html" className="filter__link">Home</Link>
+              </li> */}
               <li className="filter__item">
-                <a href="./index.html" className="filter__link">Home</a>
+                <Link to={`/catalogue/${cat}`} className="filter__link">{cat}</Link>
               </li>
-              <li className="filter__item">/
-                <a href="" className="filter__link">SkinCare</a>
-              </li>
-              <li className="filter__item">/
-                <a href="" className="filter__link">Beauty</a>
-              </li>
+              {subCat && <li className="filter__item">
+              <Link to={`/${cat}/${subCat}`} className="filter__link">/ {subCat}</Link>
+              </li>}
             </ul>
             <h3 className="filter__title">SHOP BY PRODUCT
             </h3>

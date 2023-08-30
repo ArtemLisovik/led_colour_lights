@@ -6,16 +6,31 @@ import { Button, P } from 'ui'
 import { SecondaryLayout } from 'layouts/SecondaryLayout'
 import { addProduct } from 'containers/Cart/store/CartSlice'
 import { ProductType } from 'types/types'
-import { useParams } from 'react-router-dom'
+import { Link, Navigation, useParams } from 'react-router-dom'
 import { collection, doc, getDoc, getDocs, query, setDoc, where } from 'firebase/firestore'
 import { db } from 'config/firebase'
+import { Pagination, Scrollbar, A11y, Autoplay, Navigation as Navig } from 'swiper'
+import { SwiperSlide, Swiper } from 'swiper/react'
+import { Zoom, toast } from 'react-toastify'
+
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 
 export const ProductPage = () => {
 
     const [product, setProduct] = useState<ProductType | null>()
-    const [selectedColor, setSelectedColor] = useState<string | null>()
+    const [selectedColor, setSelectedColor] = useState<any | null>()
     const [selectedLength, setSelectedLength] = useState<string | null>()
+
+    useEffect(() => {
+        if (product?.colors) {
+          setSelectedColor(Object.entries(product?.colors)[0])
+        }
+      }, [product])
 
     const colorHandler = (color: string) => {
         setSelectedColor(color)
@@ -29,10 +44,6 @@ export const ProductPage = () => {
     const sub = useParams().subcategory as string
     const id = useParams().productId as string
 
-    console.log(category, sub)
-
-
-    const filters = ['candles', 'decor', 'garlands', 'news', 'stock']
 
     useEffect(() => {
         const getProduct = async () => {
@@ -44,57 +55,132 @@ export const ProductPage = () => {
         getProduct()
     }, [])
 
-    console.log(product)
+    const dispatch = useDispatch()
+
+    const buyProduct = (e: any) => {    
+        if ((product?.length && selectedLength) && (product?.colors && selectedColor)) {
+          dispatch(addProduct({ ...product }))
+          toast.success('Товар додано до кошика!', {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Zoom
+          });
+        }
+        else if ((product?.length && selectedLength && !product?.colors) || (product?.colors && selectedColor && !product?.length)) {
+          dispatch(addProduct({ ...product }))
+          toast.success('Товар додано до кошика!', {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Zoom
+          });
+        }
+        else if (!product?.length && !product?.colors) {
+          dispatch(addProduct({ ...product }))
+          toast.success('Товар додано до кошика!', {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Zoom
+          });
+        }
+        else {
+          toast.error('Оберіть опції', {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Zoom
+          });
+        }
+      }
+    
 
     return (
         <SecondaryLayout>
             <section className="primary">
                 <div className="container">
 
-                    {/* <ul className="primary__pathTo">
-                        <li className="primary__pathToItem">
-                            <a href="./index.html" className="primary__pathToLink">Головна</a>
-                        </li>
-                        <li className="primary__pathToItem"><span>-</span>
-                            <a href="" className="primary__pathToLink">Герлянды на батарейках</a>
-                        </li>
-                        <li className="primary__pathToItem"><span>-</span>
-                            <a href="" className="primary__pathToLink">автономные</a>
-                        </li>
-                    </ul> */}
-
                     <a href="" className="primary__pathTo-mobile">Назад</a>
                     <div className="primary__card">
                         <div className="primary__photo-block">
                             <div className="primary__photo-wrapper">
-                                <img src={product?.image} alt="card__photo" className="primary__photo" />
+
+                                {selectedColor?.[1] && <Swiper
+                                    // install Swiper modules
+                                    modules={[Navig, Pagination, Scrollbar, A11y, Autoplay]}
+                                    spaceBetween={0}
+                                    slidesPerView={1}
+                                    speed={600}
+                                    loop={true}
+                                    navigation={true}
+                                    pagination={{ clickable: true }}
+                                    scrollbar={{ draggable: true }}
+                                    autoplay={{
+                                        delay: 2500,
+                                        disableOnInteraction: false,
+                                    }}>
+                                    {
+                                        selectedColor[1].map((image: any) => {
+                                            return (
+                                                <SwiperSlide key={image}>
+                                                    <img loading='lazy' src={image} alt="product image" className="new__card__photo card__photo" />
+
+                                                </SwiperSlide>
+
+                                            )
+                                        })
+                                    }
+                                </Swiper>}
                             </div>
                         </div>
 
 
                         <div className="primary__description description">
-                            <h3 className="description__subtitle">{product?.name}</h3>
-                            <h2 className="description__title">{product?.description}</h2>
+                            <h2 className="description__title">{product?.name}</h2>
+                            <p className="description__text">{product?.description}</p>
 
-                            {product?.colors && <ul className="description__colors">
+                            {product?.colors &&
+                                <>
+                                    <p className="description__length-title">Колір:</p>
+                                    <ul className="description__length">
 
-                                {product.colors.map((color: any) => {
-                                    return (
-                                        <li
-                                            key={color}
-                                            onClick={() => colorHandler(color)}
-                                            className="description__colors-item"
-                                            style={{ background: color, boxShadow: selectedColor === color ? `0 0 20px ${color}` : 'none' }}>
-                                        </li>
-                                    )
-                                })}
+                                        {Object.entries(product.colors).map(color => {
+                                            return (
+                                                <li
+                                                    onClick={(e) => colorHandler(color as any)}
+                                                    key={color as any}
+                                                    className={selectedColor?.[0] === color[0] ? `card__colors-item active` : `card__colors-item`}
+                                                >
+                                                    {color[0]}
+                                                </li>
+                                            )
 
-                            </ul>
+                                        })}
+                                    </ul>
+                                </>
                             }
 
-
-                            {/* <p className="description__notification">car perfume, 6 gr</p> */}
-                            <p className="description__text">{product?.description}</p>
                             {product?.length &&
                                 <>
                                     <p className='description__length-title'>Довжина:</p>
@@ -105,7 +191,6 @@ export const ProductPage = () => {
                                                     onClick={(e) => lengthHandler(length)}
                                                     key={length}
                                                     className={selectedLength === length ? 'description__length-item selected' : 'description__length-item'}
-
                                                 >
                                                     {length} м
                                                 </li>
@@ -120,7 +205,9 @@ export const ProductPage = () => {
                             <p className="description__price">{product?.newPrice}<span> грн</span></p>
 
                             <div className='button__wrapper'>
-                                <Button type='dark'>Додати у кошик</Button>
+                                <Button
+                                onClick={buyProduct}
+                                type='dark'>Додати у кошик</Button>
                             </div>
 
                             {/* <button className="description__button">Додати у кошик</button> */}
