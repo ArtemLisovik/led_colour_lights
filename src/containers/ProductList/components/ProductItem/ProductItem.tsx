@@ -132,17 +132,15 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
           }
         </Swiper>}
 
-
-
       <h3 className="new__card__title card__title">{name}</h3>
       <p className="new__card__descr card__descr">{description}</p>
 
-      {
+      {colors && 
         <>
           <p className="card__extra-options-title">Колір:</p>
           <ul className="card__colors-list">
 
-            {colors && Object.entries(colors).map(color => {
+            {Object.entries(colors).map(color => {
               console.log(color[0] === selectedColor?.[0])
               return (
                 <li
@@ -159,11 +157,11 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
         </>
       }
 
-      {
+      {length &&
         <>
           <p className="card__extra-options-title">Довжина:</p>
           <ul className="card__extra-options">
-            {length && length.map(lengthItem => {
+            {length.map(lengthItem => {
               return (
                 <li
                   onClick={(e) => optionHandler(e as any, lengthItem)}
