@@ -16,16 +16,21 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 
-export const ProductItem = ({ colors, name, newPrice, description, image, oldPrice, id, options, length }: ProductType) => {
+export const ProductItem = ({ name, newPrice, description, image, oldPrice, id, options, length, avatars }: ProductType) => {
 
   const [selectedLength, setSelectedOption] = useState()
   const [selectedColor, setSelectedColor] = useState<any>()
 
   useEffect(() => {
-    if (colors) {
-      setSelectedColor(Object.entries(colors)[0])
+    console.log(avatars)
+  })
+
+
+  useEffect(() => {
+    if (avatars) {
+      setSelectedColor(Object.entries(avatars)[0])
     }
-  }, [colors])
+  }, [avatars])
 
   const dispatch = useDispatch()
 
@@ -42,7 +47,7 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
   const buyProduct = (e: any) => {
     e.preventDefault()
 
-    if ((length && selectedLength) && (colors && selectedColor)) {
+    if ((length && selectedLength) && (avatars && selectedColor)) {
       dispatch(addProduct({ name, newPrice, description, image, oldPrice, id, selectedColor, selectedLength }))
       toast.success('Товар додано до кошика!', {
         position: "bottom-right",
@@ -56,7 +61,7 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
         transition: Zoom
       });
     }
-    else if ((length && selectedLength && !colors) || (colors && selectedColor && !length)) {
+    else if ((length && selectedLength && !avatars) || (avatars && selectedColor && !length)) {
       dispatch(addProduct({ name, newPrice, description, image, oldPrice, id, selectedColor, selectedLength }))
       toast.success('Товар додано до кошика!', {
         position: "bottom-right",
@@ -70,7 +75,7 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
         transition: Zoom
       });
     }
-    else if (!length && !colors) {
+    else if (!length && !avatars) {
       dispatch(addProduct({ name, newPrice, description, image, oldPrice, id }))
       toast.success('Товар додано до кошика!', {
         position: "bottom-right",
@@ -134,12 +139,12 @@ export const ProductItem = ({ colors, name, newPrice, description, image, oldPri
       <h3 className="new__card__title card__title">{name}</h3>
       <p className="new__card__descr card__descr">{description}</p>
 
-      {colors && 
+      {avatars && 
         <>
           <p className="card__extra-options-title">Колір:</p>
           <ul className="card__colors-list">
 
-            {Object.entries(colors).map(color => {
+            {Object.entries(avatars).map(color => {
               console.log(color[0] === selectedColor?.[0])
               return (
                 <li

@@ -88,15 +88,16 @@ export const ProductList = ({ title, category, database, filter, path1, subcateg
             return (
               <ProductItem
                     key={index}
-                    name={product.name}
-                    oldPrice={product.oldPrice}
-                    newPrice={product.newPrice}
-                    description={product.description}
-                    id={product.id}
-                    image={product.image}
-                    options={product.options}
-                    length={product.length}
-                    colors={product.colors}
+                    {...product}
+                    // name={product.name}
+                    // oldPrice={product.oldPrice}
+                    // newPrice={product.newPrice}
+                    // description={product.description}
+                    // id={product.id}
+                    // image={product.image}
+                    // options={product.options}
+                    // length={product.length}
+                    // colors={product.colors}
                   />
             )
            })

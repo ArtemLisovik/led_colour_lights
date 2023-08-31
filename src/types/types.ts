@@ -7,5 +7,6 @@ export type ProductType = {
     image: string,
     options?: [],
     length?: [],
-    colors?: []
+    colors?: [],
+    avatars?: []
 }
