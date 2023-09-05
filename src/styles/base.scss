@@ -375,6 +375,21 @@ a {
         color: #fff;
         padding: 130px 0;
     }
+
+    &__list {
+        font-size: 14px;
+        list-style-type: disc;
+        margin-left: 15px;
+        margin-top: 20px;
+    }
+    &__list-number {
+        list-style: auto;
+        margin-left: 15px;
+    }
+
+    &__list-item {
+        margin-bottom: 8px;
+    }
 }
 
 .description2 {
@@ -383,15 +398,17 @@ a {
 
     &__block-top {
         border-bottom: 1px solid rgba(255,255,255,.15);
+        padding-bottom: 51px;
     }
 
     &__title {
         font-size: 16px;
+        text-transform: uppercase;
     }
 
     &__text {
         margin-top: 25px;
-        line-height: 43px;
+        // line-height: 43px;
         font-size: 16px;
         padding-bottom: 25px;
     }

@@ -234,19 +234,31 @@ export const ProductPage = () => {
                         <div className="secondary__container-sm">
                             <div className="secondary__description2-wrapper description2">
                                 <div className="description2__block-top">
-                                    <h3 className="description2__title">BLACK OUDH</h3>
-                                    <p className="description2__text">Precious Oudh establishes a warm Oriental woody fragrance
-                                        that
-                                        gives life to an elegant and sophisticated atmosphere.</p>
+                                    <h3 className="description2__title">Характеристики:</h3>
+                                    <ul className="secondary__list">
+                                        <li className="secondary__list-item">теплий білий</li>
+                                        <li className="secondary__list-item">довжина: 20м + (довжина дроту - 5м)</li>
+                                        <li className="secondary__list-item">кількість світлодіодів: 200 шт</li>
+                                        <li className="secondary__list-item">режим роботи: статичний + 7 режимів миготіння;</li>
+                                        <li className="secondary__list-item">клас захисту: IP44.
+</li>
+                                    </ul>
                                 </div>
                                 <div className="description2__block-bottom">
-                                    <h3 className="description2__title">PATCHOULI
-                                    </h3>
-                                    <p className="description2__text">Patchouli is considered a very important ingredient in
-                                        many
-                                        love potions in India. This is not really surprising when you consider the sultry
-                                        tones
-                                        of musk and earth that conjure up something deeply sensual.</p>
+                                 
+                                    <p className="description2__text">Режими в гірлянді перемикаються за допомогою мережевого блоку, всього 8 режимів роботи:</p>
+                                    <ol className="secondary__list-number">
+                                        <li className="secondary__list-item">поєднання різних режимів роботи;
+</li>
+                                        <li className="secondary__list-item">загоряється хвилями;</li>
+                                        <li className="secondary__list-item">послідовне освітлення;</li>
+                                        <li className="secondary__list-item">повільне світіння;</li>
+                                        <li className="secondary__list-item">швидкий спалах;</li>
+                                        <li className="secondary__list-item">повільне зникнення;</li>
+                                        <li className="secondary__list-item">миготіння;</li>
+                                        <li className="secondary__list-item">постійне світло – статичний режим.</li>
+                                    </ol>
+
                                 </div>
 
 
@@ -265,9 +277,11 @@ export const ProductPage = () => {
                 <div className="howToUse__info">
                     <div className="secondary__container-sm">
                         <div className="howToUse__instruction">
-                            <h3 className="howToUse__title">How to Use
+                            <h3 className="howToUse__title">Опис:
                             </h3>
-                            <p className="howToUse__descr">1) Remove the foil carefully without damaging the membrane 2) Click the clip onto the holder in the preferred position 3) Click the perfume onto your car’s fan unit 4) Adjust the fan setting to regulate the intensity of the fragrance</p>
+                            <p className="howToUse__descr">Гірлянда, яку яку можна використовувати на вулиці і в приміщенні!</p>
+                            <p className="howToUse__descr">LED гірлянда з вінілу невеликого розміру, але із гарною водонепроникністю.
+Порівняно з мідними гірляндами, дротяна гірлянда із вінілу відмінно підходить для використання на відкритому повітрі.</p>
                         </div>
                     </div>
                 </div>

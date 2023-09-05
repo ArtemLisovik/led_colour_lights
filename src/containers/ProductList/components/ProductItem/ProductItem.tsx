@@ -22,11 +22,6 @@ export const ProductItem = ({ name, newPrice, description, image, oldPrice, id, 
   const [selectedColor, setSelectedColor] = useState<any>()
 
   useEffect(() => {
-    console.log(avatars)
-  })
-
-
-  useEffect(() => {
     if (avatars) {
       setSelectedColor(Object.entries(avatars)[0])
     }
