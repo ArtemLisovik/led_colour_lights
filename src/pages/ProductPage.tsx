@@ -245,8 +245,14 @@ export const ProductPage = () => {
                                     </ul>
                                 </div>
                                 <div className="description2__block-bottom">
+
+                                <h3 className="description2__text">ОПИС:
+                            </h3>
+                            <p className="secondary__list-item">Гірлянда, яку яку можна використовувати на вулиці і в приміщенні!</p>
+                            <p className="secondary__list-item">LED гірлянда з вінілу невеликого розміру, але із гарною водонепроникністю.
+Порівняно з мідними гірляндами, дротяна гірлянда із вінілу відмінно підходить для використання на відкритому повітрі.</p>
                                  
-                                    <p className="description2__text">Режими в гірлянді перемикаються за допомогою мережевого блоку, всього 8 режимів роботи:</p>
+                                    {/* <p className="description2__text">Режими в гірлянді перемикаються за допомогою мережевого блоку, всього 8 режимів роботи:</p>
                                     <ol className="secondary__list-number">
                                         <li className="secondary__list-item">поєднання різних режимів роботи;
 </li>
@@ -257,7 +263,7 @@ export const ProductPage = () => {
                                         <li className="secondary__list-item">повільне зникнення;</li>
                                         <li className="secondary__list-item">миготіння;</li>
                                         <li className="secondary__list-item">постійне світло – статичний режим.</li>
-                                    </ol>
+                                    </ol> */}
 
                                 </div>
 

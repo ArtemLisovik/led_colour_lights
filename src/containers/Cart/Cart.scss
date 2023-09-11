@@ -44,6 +44,8 @@
         background-color: #efedea;
         transition: all 0.5s ease;
 
+        
+
         @media (max-width: 520px) {
             top: 0;
             left: 100vw;
@@ -94,6 +96,13 @@
         overflow: scroll;
         max-height: 48vh;
         flex: 1 1 auto;
+        padding: 10px;
+    }
+
+    &-product {
+        padding: 5px;
+        border: 1px solid #b4b4b4;
+        position: relative;
     }
 
 
