@@ -12,8 +12,12 @@ import './Cart.scss'
 
 export const Cart = ({ active, setActive }: { active: boolean, setActive: Function }) => {
 
-  const { products, loading } = useSelector((state: RootState) => state.CartReducer)
+  const { products, loading, totalPrice } = useSelector((state: RootState) => state.CartReducer)
   const [sumPrice, setSumPrice] = useState<number>(0)
+
+  useEffect(() => {
+    console.log(products)
+  }, [products])
 
   const dispatch = useDispatch()
 
@@ -62,24 +66,33 @@ export const Cart = ({ active, setActive }: { active: boolean, setActive: Functi
           </div>
 
           {products.length > 0 && <div className="cart__inner-products">
-            {products && products.map((product: ProductType, index: number) => {
-              return (
-                <CartProduct
-                  key={index}
-                  name={product.name}
-                  description={product.description}
-                  id={product.id}
-                  newPrice={product.newPrice}
-                  oldPrice={product.oldPrice}
-                  image={product.image}
-                />
-              )
+            {products && products.map((product: any, index: number) => {
+              console.log(products)
+              if (false) {
+
+              } else {
+                return (
+                  <CartProduct
+                    count={product.count}
+                    key={index}
+                    name={product.name}
+                    description={product.description}
+                    id={product.id}
+                    newPrice={product.newPrice}
+                    oldPrice={product.oldPrice}
+                    image={product.image}
+                    selectedColor={product.selectedColor}
+                    selectedLength={product.selectedLength}
+                  />
+                )
+              }
+             
             })}
           </div>}
 
           {products.length > 0 && <div className="cart__inner-total">
             <p className="cart__inner-price">Загальна сума:</p>
-            <p className="cart__inner-price">{sumPrice} грн</p>
+            <p className="cart__inner-price">{totalPrice as any} грн</p>
           </div>}
 
           {products.length > 0 && <div className="cart__inner-buttons">

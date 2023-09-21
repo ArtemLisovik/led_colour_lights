@@ -23,6 +23,7 @@ type ProductList = {
 export const ProductList = ({ title, category, database, filter, path1, subcategory }: ProductList) => {
   const [products, setProducts] = useState<any>({ candles: '' })
 
+
   useEffect(() => {
     const func = async () => {
 
@@ -87,8 +88,9 @@ export const ProductList = ({ title, category, database, filter, path1, subcateg
            Object.values(Object.values(products)[0] as any).map((product:any, index:number) => {
             return (
               <ProductItem
-                    key={index}
                     {...product}
+                    // length={[...product.length]}
+                    key={index}
                     // name={product.name}
                     // oldPrice={product.oldPrice}
                     // newPrice={product.newPrice}

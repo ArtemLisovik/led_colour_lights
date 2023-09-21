@@ -2,28 +2,19 @@ import { ProductType } from 'types/types'
 import './CartProduct.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'store/store'
-import { deleteProduct } from 'containers/Cart/store/CartSlice'
+import { decreaseCountProduct, deleteProduct, increaseCountProduct } from 'containers/Cart/store/CartSlice'
 import { useState } from 'react'
 
 
-export const CartProduct = ({ name, description, oldPrice, newPrice, id, image }: ProductType) => {
+export const CartProduct = ({ name, description, oldPrice, newPrice, id, image, count, selectedColor, selectedLength }: any) => {
 
-  const [counter, setCounter] = useState<number>(1)
-
-  const counterIncr = (state:any) => {
-    setCounter(state => state + 1)
-  }
-
-  const counterDecr = (state:any) => {
-    setCounter(state => state - 1)
-  }
 
   const { products } = useSelector((state: RootState) => state.CartReducer)
 
   const dispatch = useDispatch()
 
   const removeProductFromCart = () => {
-    dispatch(deleteProduct(id))
+    dispatch(deleteProduct({name, description, oldPrice, newPrice, id, image, count, selectedColor, selectedLength}))
   }
 
   return (
@@ -47,18 +38,21 @@ export const CartProduct = ({ name, description, oldPrice, newPrice, id, image }
 		h29.64V48.28z M45.41,15.32H9.59v-3.14c0-1.22,0.99-2.22,2.22-2.22h31.39c1.22,0,2.22,0.99,2.22,2.22V15.32z"></path><path d="M30.77 46.5c.55 0 1-.45 1-1V22.32c0-.55-.45-1-1-1s-1 .45-1 1V45.5C29.77 46.05 30.22 46.5 30.77 46.5zM24.23 46.5c.55 0 1-.45 1-1V22.32c0-.55-.45-1-1-1s-1 .45-1 1V45.5C23.23 46.05 23.67 46.5 24.23 46.5zM37.32 46.5c.55 0 1-.45 1-1V22.32c0-.55-.45-1-1-1s-1 .45-1 1V45.5C36.32 46.05 36.77 46.5 37.32 46.5zM17.68 46.5c.55 0 1-.45 1-1V22.32c0-.55-.45-1-1-1s-1 .45-1 1V45.5C16.68 46.05 17.13 46.5 17.68 46.5z"></path></svg>
 
     <div className="cart-product__options">
-      <div className="cart-product__options-item">Холодний білий,</div>
-      <div className="cart-product__options-item">6 м</div>
+      <div className="cart-product__options-item">{selectedColor ? selectedColor[0]: null}</div>
+      <div className="cart-product__options-item">{selectedLength} м</div>
     </div>
 
     <div className="cart-product__final">
     <div className="cart-product__price">
-      <span onClick={counterDecr} className="cart-product__counter" id='decr'></span>
-      <span className='cart-product__number'>{counter}</span>
-      <span onClick={counterIncr} className="cart-product__counter" id='incr'></span>
+      {count > 1 ? 
+      <span onClick={() => dispatch(decreaseCountProduct({id, selectedLength, selectedColor}))} className="cart-product__counter" id='decr'></span> : 
+      <span className="cart-product__counter-empty" id='empty'></span>}
+
+      <span className='cart-product__number'>{count}</span>
+      <span onClick={() => dispatch(increaseCountProduct({id, selectedLength, selectedColor}))} className="cart-product__counter" id='incr'></span>
       </div>
 
-    <div className="cart-product__price">{newPrice} грн</div>
+    <div className="cart-product__price">{newPrice*count} грн</div>
     </div>
 
       </div>

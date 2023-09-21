@@ -81,6 +81,13 @@
         width: 15px;
         height: 100%;
     }
+    &__counter-empty {
+        font-size: 25px;
+        font-weight: 300;
+        position: relative;
+        width: 15px;
+        height: 100%;
+    }
 
     &__number {
         margin-left: 3px;
@@ -121,4 +128,8 @@
 
 #incr::after {
     content: '+';
+}
+
+#empty::after{
+    content: ' ';
 }

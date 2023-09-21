@@ -3,10 +3,11 @@ export type ProductType = {
     id: string,
     description: string,
     oldPrice?: string,
-    newPrice: string,
+    newPrice: any,
     image: string,
     options?: [],
-    length?: [],
+    length?: Array<string>,
     colors?: [],
-    avatars?: []
+    avatars?: [],
+    count?: number
 }
