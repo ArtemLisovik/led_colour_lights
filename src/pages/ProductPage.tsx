@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'store/store'
 import { Button, P } from 'ui'
 import { SecondaryLayout } from 'layouts/SecondaryLayout'
-import { addProduct } from 'containers/Cart/store/CartSlice'
+import { addProduct, increaseCountProduct } from 'containers/Cart/store/CartSlice'
 import { ProductType } from 'types/types'
 import { Link, Navigation, useParams } from 'react-router-dom'
 import { collection, doc, getDoc, getDocs, query, setDoc, where } from 'firebase/firestore'
@@ -18,17 +18,25 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { useAppSelector } from 'hooks/useRedux'
 
 
 export const ProductPage = () => {
 
+    const {products} = useAppSelector((state:RootState) => state.CartReducer )
+
     const [product, setProduct] = useState<ProductType | null>()
     const [selectedColor, setSelectedColor] = useState<any | null>()
-    const [selectedLength, setSelectedLength] = useState<string | null>()
+    const [selectedLength, setSelectedLength] = useState<any>(product?.length ? product?.length[0] : null)
 
+
+  
     useEffect(() => {
         if (product?.colors) {
           setSelectedColor(Object.entries(product?.colors)[0])
+        }
+        if(product?.length) {
+          setSelectedLength(product.length[0])
         }
       }, [product])
 
@@ -57,9 +65,84 @@ export const ProductPage = () => {
 
     const dispatch = useDispatch()
 
-    const buyProduct = (e: any) => {    
-        if ((product?.length && selectedLength) && (product?.colors && selectedColor)) {
-          dispatch(addProduct({ ...product }))
+    // const buyProduct = (e: any) => {    
+    //   if ( products.some(product => (
+    //     product.id === id && product.selectedColor === selectedColor && product.selectedLength === selectedLength
+    // )) ) {
+    //   console.log('Проверяем...')
+    //   dispatch(increaseCountProduct(id))
+    // }
+    // else {
+    //   if ((product?.length && selectedLength) && (product?.colors && selectedColor)) {
+    //     dispatch(addProduct({ ...product }))
+    //     toast.success('Товар додано до кошика!', {
+    //       position: "bottom-right",
+    //       autoClose: 3000,
+    //       hideProgressBar: true,
+    //       closeOnClick: true,
+    //       pauseOnHover: false,
+    //       draggable: true,
+    //       progress: undefined,
+    //       theme: "light",
+    //       transition: Zoom
+    //     });
+    //   }
+    //   else if ((product?.length && selectedLength && !product?.colors) || (product?.colors && selectedColor && !product?.length)) {
+    //     dispatch(addProduct({ ...product }))
+    //     toast.success('Товар додано до кошика!', {
+    //       position: "bottom-right",
+    //       autoClose: 3000,
+    //       hideProgressBar: true,
+    //       closeOnClick: true,
+    //       pauseOnHover: false,
+    //       draggable: true,
+    //       progress: undefined,
+    //       theme: "light",
+    //       transition: Zoom
+    //     });
+    //   }
+    //   else if (!product?.length && !product?.colors) {
+    //     dispatch(addProduct({ ...product }))
+    //     toast.success('Товар додано до кошика!', {
+    //       position: "bottom-right",
+    //       autoClose: 3000,
+    //       hideProgressBar: true,
+    //       closeOnClick: true,
+    //       pauseOnHover: false,
+    //       draggable: true,
+    //       progress: undefined,
+    //       theme: "light",
+    //       transition: Zoom
+    //     });
+    //   }
+    //   else {
+    //     toast.error('Оберіть опції', {
+    //       position: "bottom-right",
+    //       autoClose: 3000,
+    //       hideProgressBar: true,
+    //       closeOnClick: true,
+    //       pauseOnHover: false,
+    //       draggable: true,
+    //       progress: undefined,
+    //       theme: "light",
+    //       transition: Zoom
+    //     });
+    //   }
+    // }
+    //   }
+
+    const buyProduct = () => {  
+      if (products.some(product => (
+          product.id === id && product.selectedColor === selectedColor && product.selectedLength === selectedLength
+      )) ) {
+        console.log('Проверяем...')
+        dispatch(increaseCountProduct(id))
+      }
+      else {
+        console.log('Не проверяем')
+        console.log('12323', product?.newPrice);
+       if ((product?.length && selectedLength) && (product?.avatars && selectedColor)) {
+          dispatch(addProduct({ name: product?.name, newPrice: product?.newPrice[selectedLength], description: product?.description, image: product?.image, oldPrice: product?.oldPrice, id: product.id, selectedColor, selectedLength, count: 1 }))
           toast.success('Товар додано до кошика!', {
             position: "bottom-right",
             autoClose: 3000,
@@ -72,8 +155,8 @@ export const ProductPage = () => {
             transition: Zoom
           });
         }
-        else if ((product?.length && selectedLength && !product?.colors) || (product?.colors && selectedColor && !product?.length)) {
-          dispatch(addProduct({ ...product }))
+        else if ((product?.length && selectedLength && !product?.avatars) || (product?.avatars && selectedColor && !product?.length)) {
+          dispatch(addProduct({ name: product?.name, newPrice: product?.newPrice[selectedLength], description: product?.description, image: product?.image, oldPrice: product?.oldPrice, id: product?.id, selectedColor, selectedLength, count: 1 }))
           toast.success('Товар додано до кошика!', {
             position: "bottom-right",
             autoClose: 3000,
@@ -86,8 +169,9 @@ export const ProductPage = () => {
             transition: Zoom
           });
         }
-        else if (!product?.length && !product?.colors) {
-          dispatch(addProduct({ ...product }))
+        else if (!product?.length && !product?.avatars) {
+  
+          dispatch(addProduct({ name: product?.name, newPrice: product?.newPrice[selectedLength], description: product?.description, image: product?.image, oldPrice: product?.oldPrice, id, count: 1 }))
           toast.success('Товар додано до кошика!', {
             position: "bottom-right",
             autoClose: 3000,
@@ -114,9 +198,13 @@ export const ProductPage = () => {
           });
         }
       }
+    }
+
+
     
 
     return (
+
         <SecondaryLayout>
             <section className="primary">
                 <div className="container">
@@ -202,7 +290,7 @@ export const ProductPage = () => {
 
 
                             }
-                            <p className="description__price">{product?.newPrice}<span> грн</span></p>
+                            <p className="description__price">{product?.newPrice[selectedLength]}<span> грн</span></p>
 
                             <div className='button__wrapper'>
                                 <Button

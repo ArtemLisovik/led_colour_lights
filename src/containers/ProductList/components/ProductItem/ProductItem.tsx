@@ -114,6 +114,7 @@ export const ProductItem = ({ name, newPrice, description, image, oldPrice, id, 
       }
     }
   }
+  
   return (
     <div className="new__card card">
 
