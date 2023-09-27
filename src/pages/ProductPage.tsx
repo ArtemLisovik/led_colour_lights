@@ -65,71 +65,6 @@ export const ProductPage = () => {
 
     const dispatch = useDispatch()
 
-    // const buyProduct = (e: any) => {    
-    //   if ( products.some(product => (
-    //     product.id === id && product.selectedColor === selectedColor && product.selectedLength === selectedLength
-    // )) ) {
-    //   console.log('Проверяем...')
-    //   dispatch(increaseCountProduct(id))
-    // }
-    // else {
-    //   if ((product?.length && selectedLength) && (product?.colors && selectedColor)) {
-    //     dispatch(addProduct({ ...product }))
-    //     toast.success('Товар додано до кошика!', {
-    //       position: "bottom-right",
-    //       autoClose: 3000,
-    //       hideProgressBar: true,
-    //       closeOnClick: true,
-    //       pauseOnHover: false,
-    //       draggable: true,
-    //       progress: undefined,
-    //       theme: "light",
-    //       transition: Zoom
-    //     });
-    //   }
-    //   else if ((product?.length && selectedLength && !product?.colors) || (product?.colors && selectedColor && !product?.length)) {
-    //     dispatch(addProduct({ ...product }))
-    //     toast.success('Товар додано до кошика!', {
-    //       position: "bottom-right",
-    //       autoClose: 3000,
-    //       hideProgressBar: true,
-    //       closeOnClick: true,
-    //       pauseOnHover: false,
-    //       draggable: true,
-    //       progress: undefined,
-    //       theme: "light",
-    //       transition: Zoom
-    //     });
-    //   }
-    //   else if (!product?.length && !product?.colors) {
-    //     dispatch(addProduct({ ...product }))
-    //     toast.success('Товар додано до кошика!', {
-    //       position: "bottom-right",
-    //       autoClose: 3000,
-    //       hideProgressBar: true,
-    //       closeOnClick: true,
-    //       pauseOnHover: false,
-    //       draggable: true,
-    //       progress: undefined,
-    //       theme: "light",
-    //       transition: Zoom
-    //     });
-    //   }
-    //   else {
-    //     toast.error('Оберіть опції', {
-    //       position: "bottom-right",
-    //       autoClose: 3000,
-    //       hideProgressBar: true,
-    //       closeOnClick: true,
-    //       pauseOnHover: false,
-    //       draggable: true,
-    //       progress: undefined,
-    //       theme: "light",
-    //       transition: Zoom
-    //     });
-    //   }
-    // }
-    //   }
 
     const buyProduct = () => {  
       if (products.some(product => (
@@ -199,9 +134,6 @@ export const ProductPage = () => {
         }
       }
     }
-
-
-    
 
     return (
 

@@ -18,7 +18,8 @@ import { useAppSelector } from 'hooks/useRedux'
 import { RootState } from 'store/store'
 
 
-export const ProductItem = ({ name, newPrice, description, image, oldPrice, id, options, length, avatars }: ProductType) => {
+export const ProductItem = ({ name, newPrice, description, image, oldPrice, id, options, length, avatars, type, path }: ProductType) => {
+
 
   const { products } = useAppSelector((state: RootState) => state.CartReducer)
 
@@ -50,14 +51,14 @@ export const ProductItem = ({ name, newPrice, description, image, oldPrice, id, 
     if ( products.some(product => (
         product.id === id && product.selectedColor === selectedColor && product.selectedLength === selectedLength
     )) ) {
-      console.log('Проверяем...')
+      // console.log('Проверяем...')
       dispatch(increaseCountProduct(id))
     }
     else {
       console.log('Не проверяем')
       console.log('12323', newPrice);
      if ((length && selectedLength) && (avatars && selectedColor)) {
-        dispatch(addProduct({ name, newPrice: newPrice[selectedLength], description, image, oldPrice, id, selectedColor, selectedLength, count: 1 }))
+        dispatch(addProduct({ name, newPrice: newPrice[selectedLength], description, image, oldPrice, id, selectedColor, selectedLength, count: 1, type, path }))
         toast.success('Товар додано до кошика!', {
           position: "bottom-right",
           autoClose: 3000,
@@ -71,7 +72,7 @@ export const ProductItem = ({ name, newPrice, description, image, oldPrice, id, 
         });
       }
       else if ((length && selectedLength && !avatars) || (avatars && selectedColor && !length)) {
-        dispatch(addProduct({ name, newPrice: newPrice[selectedLength], description, image, oldPrice, id, selectedColor, selectedLength, count: 1 }))
+        dispatch(addProduct({ name, newPrice: newPrice[selectedLength], description, image, oldPrice, id, selectedColor, selectedLength, count: 1,type, path }))
         toast.success('Товар додано до кошика!', {
           position: "bottom-right",
           autoClose: 3000,
@@ -86,7 +87,7 @@ export const ProductItem = ({ name, newPrice, description, image, oldPrice, id, 
       }
       else if (!length && !avatars) {
 
-        dispatch(addProduct({ name, newPrice: newPrice[selectedLength], description, image, oldPrice, id, count: 1 }))
+        dispatch(addProduct({ name, newPrice: newPrice[selectedLength], description, image, oldPrice, id, count: 1, type, path }))
         toast.success('Товар додано до кошика!', {
           position: "bottom-right",
           autoClose: 3000,

@@ -9,5 +9,7 @@ export type ProductType = {
     length?: Array<string>,
     colors?: [],
     avatars?: [],
-    count?: number
+    count?: number,
+    type?: string,
+    path?:any
 }

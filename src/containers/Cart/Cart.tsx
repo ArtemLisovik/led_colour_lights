@@ -15,10 +15,6 @@ export const Cart = ({ active, setActive }: { active: boolean, setActive: Functi
   const { products, loading, totalPrice } = useSelector((state: RootState) => state.CartReducer)
   const [sumPrice, setSumPrice] = useState<number>(0)
 
-  useEffect(() => {
-    console.log(products)
-  }, [products])
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -29,6 +25,7 @@ export const Cart = ({ active, setActive }: { active: boolean, setActive: Functi
       })
     }
   }, []);
+
   useEffect(() => {
     active ? document.body.style.overflow = 'hidden' : document.body.style.overflowY = 'scroll'
   }, [active])
@@ -36,7 +33,7 @@ export const Cart = ({ active, setActive }: { active: boolean, setActive: Functi
   useEffect(() => {
     getTotalPrice()
     localStorage.setItem('cartProducts', JSON.stringify(products));
-  }, [products])
+  }, [products, products.length])
 
 
   const getTotalPrice = () => {
@@ -67,7 +64,6 @@ export const Cart = ({ active, setActive }: { active: boolean, setActive: Functi
 
           {products.length > 0 && <div className="cart__inner-products">
             {products && products.map((product: any, index: number) => {
-              console.log(products)
               if (false) {
 
               } else {
@@ -83,16 +79,17 @@ export const Cart = ({ active, setActive }: { active: boolean, setActive: Functi
                     image={product.image}
                     selectedColor={product.selectedColor}
                     selectedLength={product.selectedLength}
+                    type={product.type}
+                    path={product.path}
                   />
                 )
               }
-             
             })}
           </div>}
 
           {products.length > 0 && <div className="cart__inner-total">
             <p className="cart__inner-price">Загальна сума:</p>
-            <p className="cart__inner-price">{totalPrice as any} грн</p>
+            <p className="cart__inner-price">{sumPrice as any} грн</p>
           </div>}
 
           {products.length > 0 && <div className="cart__inner-buttons">
@@ -110,11 +107,6 @@ export const Cart = ({ active, setActive }: { active: boolean, setActive: Functi
           </div>}
         </div>
       </div>
-
-
-
-
-
     </div>
   )
 }

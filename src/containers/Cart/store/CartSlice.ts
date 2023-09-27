@@ -57,7 +57,7 @@ const cartSlice = createSlice({
         },
         deleteProduct: (state: any, action) => {
             state.products = state.products.filter((product: any) => {
-                console.log('prod', product.selectedLength)
+                // console.log('prod', product.selectedLength)
                 // console.log(product.id !== action.payload.id && product.selectedLength === action.payload.selectedLength)
                 console.log(product.id !== action.payload.id)
                 return (product.id !== action.payload.id || product.selectedLength !== action.payload.selectedLength || isSelectedColorExist(product) !== isSelectedColorExist(action.payload))

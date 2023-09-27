@@ -73,7 +73,7 @@ export const ProductList = ({ title, category, database, filter, path1, subcateg
                 <Link to={`/catalogue/${cat}`} className="filter__link">{cat}</Link>
               </li>
               {subCat && <li className="filter__item">
-              <Link to={`/${cat}/${subCat}`} className="filter__link">/ {subCat}</Link>
+                <Link to={`/${cat}/${subCat}`} className="filter__link">/ {subCat}</Link>
               </li>}
             </ul>
             <h3 className="filter__title">SHOP BY PRODUCT
@@ -85,99 +85,16 @@ export const ProductList = ({ title, category, database, filter, path1, subcateg
           </div>}
 
           {
-           Object.values(Object.values(products)[0] as any).map((product:any, index:number) => {
-            return (
-              <ProductItem
-                    {...product}
-                    // length={[...product.length]}
-                    key={index}
-                    // name={product.name}
-                    // oldPrice={product.oldPrice}
-                    // newPrice={product.newPrice}
-                    // description={product.description}
-                    // id={product.id}
-                    // image={product.image}
-                    // options={product.options}
-                    // length={product.length}
-                    // colors={product.colors}
+            Object.values(Object.values(products)[0] as any).map((product: any, index: number) => {
+              const params = {...product, path: `${cat}/${subCat}`};
+
+              return (
+                <ProductItem
+                  {...params}
+                  key={index}
                   />
-            )
-           })
-
-          //   : 
-          //  Object.values(products)
-          //  .map((product: any, index: any) => {
-          //    return (
-          //      <ProductItem
-          //        key={index}
-          //        name={product.name}
-          //        oldPrice={product.oldPrice}
-          //        newPrice={product.newPrice}
-          //        description={product.description}
-          //        id={product.id}
-          //        image={product.image}
-          //        options={product.options}
-          //      />
-          //    )
-          //  })
-          // }
-          }
-          {/* {
-            Object.values(products)
-              .map((product: any, index: any) => {
-                return (
-                  <ProductItem
-                    key={index}
-                    name={product.name}
-                    oldPrice={product.oldPrice}
-                    newPrice={product.newPrice}
-                    description={product.description}
-                    id={product.id}
-                    image={product.image}
-                    options={product.options}
-                  />
-                )
-              })}
-               */}
-
-          {/* {
-
-            products[category as any] ?
-              Object.values(products[category as any])
-                .map((product: any, index: any) => {
-                  return (
-                    <ProductItem
-                      key={index}
-                      name={product.name}
-                      oldPrice={product.oldPrice}
-                      newPrice={product.newPrice}
-                      description={product.description}
-                      id={product.id}
-                      image={product.image}
-                      options={product.options}
-                    />
-                  )
-                })
-
-              : Object.values(products)
-                .map((categories: any) => {
-                  return Object.values(categories).map((product: any, index: any) => {
-                    return (
-                      <ProductItem
-                      key={index}
-                      name={product.name}
-                      oldPrice={product.oldPrice}
-                      newPrice={product.newPrice}
-                      description={product.description}
-                      id={product.id}
-                      image={product.image}
-                      options={product.options}
-                    />
-                    )
-                  })
-                })
-          } */}
-
+          )
+           })}
         </div>
       </div>
     </section>
