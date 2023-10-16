@@ -1,0 +1,20 @@
+.modal {
+    position: relative;
+    padding: 50px;
+    background-color: #fff;
+    z-index: 999;
+
+    &__close-btn {
+        position: absolute;
+        top: 0px;
+        right: 5px;
+        cursor: pointer;
+        font-size: 30px;
+        font-weight: 300;
+    }
+
+    .title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}

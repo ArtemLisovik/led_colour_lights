@@ -8,6 +8,7 @@ import { ProductType } from 'types/types'
 import { addProduct } from './store/CartSlice'
 
 import './Cart.scss'
+import { setOrderOpen } from 'store/OrderSlice'
 
 
 export const Cart = ({ active, setActive }: { active: boolean, setActive: Function }) => {
@@ -43,6 +44,7 @@ export const Cart = ({ active, setActive }: { active: boolean, setActive: Functi
     })
     setSumPrice(sum)
   }
+
 
 
   return (
@@ -100,8 +102,9 @@ export const Cart = ({ active, setActive }: { active: boolean, setActive: Functi
             </Button>
 
             <Button
+              onClick={() => dispatch(setOrderOpen(true))}
               type='dark'
-              to='/order'>
+              >
               Оформити
             </Button>
           </div>}

@@ -5,5 +5,8 @@
     bottom: 0;
     width: 100vw;
     backdrop-filter: blur(10px);
-    z-index: 100;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

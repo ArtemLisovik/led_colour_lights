@@ -5,6 +5,7 @@ import './Header.scss'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from 'store/store'
+import { Modal } from 'containers/Modal/Modal'
 
 export const Header = () => {
 
@@ -16,7 +17,6 @@ export const Header = () => {
     setCart((state) => !state)
   }
 
-  // console.log(products)
 
   return (
     <header className="header">

@@ -1,6 +1,7 @@
 export interface IData {
     name: string,
+    surname: string,
     phone: number,
-    products: [],
+    // products: [],
     message: string
   }
